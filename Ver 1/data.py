@@ -13,3 +13,9 @@ def data(path):
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0)
         data.append(df)
+
+    frame = pd.concat(data, axis=0, ignore_index=True)
+
+    frame2=frame.drop(['a', 'b'], axis=1)
+
+    return(frame2)
