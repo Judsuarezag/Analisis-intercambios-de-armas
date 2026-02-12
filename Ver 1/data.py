@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import glob
 import os
 
-def data(path):
+def dataframe(path):
 
     all_files = glob.glob(os.path.join(path + "/*.csv"))
 
