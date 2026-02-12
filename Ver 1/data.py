@@ -19,3 +19,7 @@ def data(path):
     frame2=frame.drop(['a', 'b'], axis=1)
 
     return(frame2)
+
+path=r'Datos'
+frame2= data(path)
+print(frame2.head(10))
