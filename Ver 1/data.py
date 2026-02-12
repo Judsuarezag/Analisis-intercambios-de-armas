@@ -20,6 +20,6 @@ def data(path):
 
     return(frame2)
 
-path=r'Datos'
-frame2= data(path)
-print(frame2.head(10))
+# path=r'Datos'
+# frame2= data(path)
+# print(frame2.head(10))
