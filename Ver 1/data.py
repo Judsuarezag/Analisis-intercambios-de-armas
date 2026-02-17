@@ -44,3 +44,32 @@ def graf_recipients(frame2):
 
 # graf_recipients(frame2)
 
+def graf_mayor_supplier_top_recipients(frame2):
+    # Filtrar filas con Number delivered válido
+    frame2 = frame2.dropna(subset=['Number delivered'])
+    
+    # Encontrar el mayor suministrador por suma de Number delivered
+    supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False)
+    top_supplier = supplier_totals.index[0]
+    top_value = supplier_totals.iloc[0]
+    
+    # Filtrar datos para el top supplier
+    supplier_data = frame2[frame2['Supplier'] == top_supplier]
+    
+    # Encontrar los 2 países a los que más les suministra
+    recipient_totals = supplier_data.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(2)
+    
+    # Preparar datos para gráfica
+    labels = [top_supplier] + list(recipient_totals.index)
+    values = [top_value] + list(recipient_totals.values)
+    
+    # Graficar
+    plt.figure(figsize=(8,5))
+    plt.bar(labels, values, color=['blue', 'red', 'green'])
+    plt.xticks(rotation=45)
+    plt.title(f"Mayor Suministrador: {top_supplier} y sus Top 2 Receptores")
+    plt.ylabel("Número de Armas Entregadas")
+    plt.show()
+
+graf_mayor_supplier_top_recipients(frame2)
+
