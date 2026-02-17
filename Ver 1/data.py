@@ -36,7 +36,7 @@ def graf_suppliers(frame2):
     plt.title("Top 20 Suministradores de armas")
     plt.show()
 
-graf_suppliers(frame2)
+# graf_suppliers(frame2)
 
 def graf_recipients(frame2):
 
