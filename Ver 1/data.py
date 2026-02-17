@@ -16,10 +16,31 @@ def dataframe(path):
 
     frame = pd.concat(data, axis=0, ignore_index=True)
 
-    frame2=frame.drop(['a', 'b'], axis=1)
+    frame2=frame.drop(['a', 'b', 'c'], axis=1)
 
     return(frame2)
 
-# path=r'Datos'
-# frame2= data(path)
+path=r'Datos'
+frame2= dataframe(path)
 # print(frame2.head(10))
+
+def graf_suppliers(frame2):
+    cuenta_suppliers=frame2["Supplier"].value_counts().head(20)
+    plt.figure(figsize=(10,5))
+    plt.bar(cuenta_suppliers.index, cuenta_suppliers.values, color="blue")
+    plt.xticks(rotation=90)
+    plt.title("Top 20 Suministradores de armas")
+    return plt.show()
+
+# graf_suppliers(frame2)
+
+def graf_recipients(frame2):
+    cuenta_recipients=frame2["Recipient"].value_counts().head(20)
+    plt.figure(figsize=(10,5))
+    plt.bar(cuenta_recipients.index, cuenta_recipients.values, color="red")
+    plt.xticks(rotation=90)
+    plt.title("Top 20 Receptores de armas")
+    return plt.show()
+
+# graf_recipients(frame2)
+

@@ -1,4 +1,4 @@
-Recipient,Supplier,Year of order,a,Number ordered, ,Weapon designation,Weapon description,Number delivered,b,Year(s) of delivery,status,Comments,SIPRI TIV per unit,SIPRI TIV for total order,SIPRI TIV of delivered weapons
+Recipient,Supplier,Year of order,a,Number ordered,c,Weapon designation,Weapon description,Number delivered,b,Year(s) of delivery,status,Comments,SIPRI TIV per unit,SIPRI TIV for total order,SIPRI TIV of delivered weapons
 Afghanistan,Russia,2002,,3,,Mi-17,transport helicopter,3,,2002,Second hand,Second-hand; aid,2.9,8.7,8.7
 Afghanistan,Turkiye,2007,,24,,M-114 155mm,towed gun,24,,2007,Second hand,Second-hand; aid,0.2,4.8,4.8
 Afghanistan,United States,2004,?,188,?,M-113,armoured personnel carrier,188,?,2005,Second hand,Second-hand; aid; M-113A2 version; incl 15 M-577A2 command post version,0.1,18.8,18.8
