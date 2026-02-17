@@ -25,7 +25,7 @@ frame2= dataframe(path)
 # print(frame2.head(10))
 
 def graf_suppliers(frame2):
-    # cuenta_suppliers=frame2["Supplier"].value_counts().head(20)
+
     frame2 = frame2.dropna(subset=['Number delivered'])
 
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(20)
@@ -34,14 +34,17 @@ def graf_suppliers(frame2):
     plt.bar(supplier_totals.index, supplier_totals.values, color="blue")
     plt.xticks(rotation=90)
     plt.title("Top 20 Suministradores de armas")
-    return plt.show()
+    plt.show()
 
 graf_suppliers(frame2)
 
 def graf_recipients(frame2):
-    cuenta_recipients=frame2["Recipient"].value_counts().head(20)
+
+    frame2 = frame2.dropna(subset=['Number delivered'])
+
+    recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(20)
     plt.figure(figsize=(10,5))
-    plt.bar(cuenta_recipients.index, cuenta_recipients.values, color="red")
+    plt.bar(recipient_totals.index, recipient_totals.values, color="red")
     plt.xticks(rotation=90)
     plt.title("Top 20 Receptores de armas")
     return plt.show()
