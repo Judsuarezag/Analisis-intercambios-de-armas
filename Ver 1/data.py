@@ -25,14 +25,18 @@ frame2= dataframe(path)
 # print(frame2.head(10))
 
 def graf_suppliers(frame2):
-    cuenta_suppliers=frame2["Supplier"].value_counts().head(20)
+    # cuenta_suppliers=frame2["Supplier"].value_counts().head(20)
+    frame2 = frame2.dropna(subset=['Number delivered'])
+
+    supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(20)
+    
     plt.figure(figsize=(10,5))
-    plt.bar(cuenta_suppliers.index, cuenta_suppliers.values, color="blue")
+    plt.bar(supplier_totals.index, supplier_totals.values, color="blue")
     plt.xticks(rotation=90)
     plt.title("Top 20 Suministradores de armas")
     return plt.show()
 
-# graf_suppliers(frame2)
+graf_suppliers(frame2)
 
 def graf_recipients(frame2):
     cuenta_recipients=frame2["Recipient"].value_counts().head(20)
@@ -44,7 +48,7 @@ def graf_recipients(frame2):
 
 # graf_recipients(frame2)
 
-def graf_mayor_supplier_top_recipients(frame2):
+def graf_mayor_supplier(frame2):
 
     frame2 = frame2.dropna(subset=['Number delivered'])
 
@@ -66,4 +70,30 @@ def graf_mayor_supplier_top_recipients(frame2):
     plt.ylabel("Número de Armas Entregadas")
     plt.show()
 
-graf_mayor_supplier_top_recipients(frame2)
+# graf_mayor_supplier(frame2)
+
+def graf_mayor_recipient(frame2):
+
+    frame2 = frame2.dropna(subset=['Number delivered'])
+
+    recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False)
+    top_recipient = recipient_totals.index[0]
+    top_value = recipient_totals.iloc[0]
+
+    recipient_data = frame2[frame2['Recipient'] == top_recipient]
+
+    supplier_totals = recipient_data.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(5)
+
+    labels = [top_recipient] + list(supplier_totals.index)
+    values = [top_value] + list(supplier_totals.values)
+
+    plt.figure(figsize=(8,5))
+    colors = ['blue', 'red', 'green', 'orange', 'purple']
+    plt.bar(labels, values, color=colors[:len(labels)])
+    plt.xticks(rotation=45)
+    plt.title(f"Mayor Receptor: {top_recipient} y sus Top 5 Suministradores")
+    plt.ylabel("Número de Armas Entregadas")
+    plt.show()
+
+# graf_mayor_recipient(frame2)
+
