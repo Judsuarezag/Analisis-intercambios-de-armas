@@ -99,4 +99,3 @@ def graf_mayor_recipient(frame2):
     plt.show()
 
 # graf_mayor_recipient(frame2)
-
