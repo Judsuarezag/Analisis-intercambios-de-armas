@@ -20,8 +20,8 @@ def dataframe(path):
 
     return(frame2)
 
-path=r'Datos'
-frame2= dataframe(path)
+# path=r'Datos'
+# frame2= dataframe(path)
 # print(frame2.head(10))
 
 def graf_suppliers(frame2):
