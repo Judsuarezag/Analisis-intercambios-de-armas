@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import glob
 import os
 
-def dataframe(path):
+def datos_armas(path):
 
     all_files = glob.glob(os.path.join(path + "/*.csv"))
 
@@ -20,9 +20,26 @@ def dataframe(path):
 
     return(frame2)
 
+def datos_pib(path2):
+
+    all_files = glob.glob(os.path.join(path2 + "/*.csv"))
+
+    data = []
+
+    for filename in all_files:
+        df = pd.read_csv(filename, index_col=None, header=0)
+        data.append(df)
+
+    pib = pd.concat(data, axis=0, ignore_index=True)
+
+    return(pib)
+
 path=r'Datos'
-frame2= dataframe(path)
-# print(frame2.head(10))
+path2=r'PIB'
+armas= datos_armas(path)
+pib= datos_pib(path2)
+print(armas.head(10))   
+print(pib.head(10))
 
 def graf_suppliers(frame2):
 
