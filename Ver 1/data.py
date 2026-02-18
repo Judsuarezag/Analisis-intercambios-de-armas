@@ -107,7 +107,7 @@ def graf_arma(frame2):
     weapons_totals = frame2.groupby('Weapon designation')['Number delivered'].sum().sort_values(ascending=False).head(20)
     plt.figure(figsize=(10,5))
     plt.bar(weapons_totals.index, weapons_totals.values, color="green")
-    plt.xticks(rotation=45)
+    plt.xticks(rotation=60)
     plt.title("Top 20 Tipos de Armas Entregadas")
     plt.show()
 
