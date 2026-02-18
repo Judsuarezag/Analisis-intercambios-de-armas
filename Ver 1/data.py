@@ -20,8 +20,8 @@ def dataframe(path):
 
     return(frame2)
 
-# path=r'Datos'
-# frame2= dataframe(path)
+path=r'Datos'
+frame2= dataframe(path)
 # print(frame2.head(10))
 
 def graf_suppliers(frame2):
@@ -47,7 +47,7 @@ def graf_recipients(frame2):
     plt.bar(recipient_totals.index, recipient_totals.values, color="red")
     plt.xticks(rotation=90)
     plt.title("Top 20 Receptores de armas")
-    return plt.show()
+    plt.show()
 
 # graf_recipients(frame2)
 
@@ -99,3 +99,16 @@ def graf_mayor_recipient(frame2):
     plt.show()
 
 # graf_mayor_recipient(frame2)
+
+def graf_arma(frame2):
+
+    frame2 = frame2.dropna(subset=['Number delivered'])
+
+    weapons_totals = frame2.groupby('Weapon designation')['Number delivered'].sum().sort_values(ascending=False).head(20)
+    plt.figure(figsize=(10,5))
+    plt.bar(weapons_totals.index, weapons_totals.values, color="red")
+    plt.xticks(rotation=90)
+    plt.title("Top 20 Tipos de Armas Entregadas")
+    plt.show()
+
+# graf_arma(frame2)
