@@ -66,7 +66,7 @@ def graf_mayor_supplier(frame2):
     labels = [top_supplier] + list(recipient_totals.index)
     values = [top_value] + list(recipient_totals.values)
 
-    plt.figure(figsize=(8,5))
+    plt.figure(figsize=(10,5))
     plt.bar(labels, values, color=['blue', 'red', 'green', 'orange', 'purple'])
     plt.xticks(rotation=45)
     plt.title(f"Mayor Suministrador: {top_supplier} y sus Top 5 Receptores")
@@ -90,7 +90,7 @@ def graf_mayor_recipient(frame2):
     labels = [top_recipient] + list(supplier_totals.index)
     values = [top_value] + list(supplier_totals.values)
 
-    plt.figure(figsize=(8,5))
+    plt.figure(figsize=(10,5))
     colors = ['blue', 'red', 'green', 'orange', 'purple']
     plt.bar(labels, values, color=colors[:len(labels)])
     plt.xticks(rotation=45)
@@ -106,8 +106,8 @@ def graf_arma(frame2):
 
     weapons_totals = frame2.groupby('Weapon designation')['Number delivered'].sum().sort_values(ascending=False).head(20)
     plt.figure(figsize=(10,5))
-    plt.bar(weapons_totals.index, weapons_totals.values, color="red")
-    plt.xticks(rotation=90)
+    plt.bar(weapons_totals.index, weapons_totals.values, color="green")
+    plt.xticks(rotation=45)
     plt.title("Top 20 Tipos de Armas Entregadas")
     plt.show()
 
