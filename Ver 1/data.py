@@ -32,7 +32,9 @@ def datos_pib(path2):
 
     pib = pd.concat(data, axis=0, ignore_index=True)
 
-    pib = pib.dropna(subset=['Country Name'])
+    frame2=pib.drop(['a'], axis=1)
+
+    pib = frame2.dropna(subset=['Country Name'])
 
     return(pib)
 
@@ -43,9 +45,9 @@ def datos_pib(path2):
 # print(armas.head(10))   
 # print(pib.head(10))
 
-def graf_suppliers(frame2):
+def graf_suppliers(armas):
 
-    frame2 = frame2.dropna(subset=['Number delivered'])
+    frame2 = armas.dropna(subset=['Number delivered'])
 
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(20)
     
@@ -57,9 +59,9 @@ def graf_suppliers(frame2):
 
 # graf_suppliers(frame2)
 
-def graf_recipients(frame2):
+def graf_recipients(armas):
 
-    frame2 = frame2.dropna(subset=['Number delivered'])
+    frame2 = armas.dropna(subset=['Number delivered'])
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(20)
     plt.figure(figsize=(10,5))
@@ -70,9 +72,9 @@ def graf_recipients(frame2):
 
 # graf_recipients(frame2)
 
-def graf_mayor_supplier(frame2):
+def graf_mayor_supplier(armas):
 
-    frame2 = frame2.dropna(subset=['Number delivered'])
+    frame2 = armas.dropna(subset=['Number delivered'])
 
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False)
     top_supplier = supplier_totals.index[0]
@@ -94,9 +96,9 @@ def graf_mayor_supplier(frame2):
 
 # graf_mayor_supplier(frame2)
 
-def graf_mayor_recipient(frame2):
+def graf_mayor_recipient(armas):
 
-    frame2 = frame2.dropna(subset=['Number delivered'])
+    frame2 = armas.dropna(subset=['Number delivered'])
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False)
     top_recipient = recipient_totals.index[0]
@@ -119,9 +121,9 @@ def graf_mayor_recipient(frame2):
 
 # graf_mayor_recipient(frame2)
 
-def graf_arma(frame2):
+def graf_arma(armas):
 
-    frame2 = frame2.dropna(subset=['Number delivered'])
+    frame2 = armas.dropna(subset=['Number delivered'])
 
     weapons_totals = frame2.groupby('Weapon designation')['Number delivered'].sum().sort_values(ascending=False).head(20)
     plt.figure(figsize=(10,5))
@@ -131,3 +133,24 @@ def graf_arma(frame2):
     plt.show()
 
 # graf_arma(frame2)
+
+def graf_pib(armas, pib, country):
+
+    row = pib[pib['Country Name'] == country]
+    if row.empty:
+        print(f"No data for {country}")
+        return
+    year_cols = [col for col in pib.columns if col.isdigit()]
+    years = [int(col) for col in year_cols]
+    values = row[year_cols].values.flatten()
+    values = pd.to_numeric(values, errors='coerce')
+    plt.figure(figsize=(10,5))
+    plt.plot(years, values)
+    plt.title(f"PIB de {country}")
+    plt.xlabel("Año")
+    plt.ylabel("PIB (US$)")
+    plt.show()
+
+# path2 = r'PIB'
+# pib = datos_pib(path2)
+# graf_pib(pib, "Estados Unidos")
