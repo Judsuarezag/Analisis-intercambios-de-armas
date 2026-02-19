@@ -38,10 +38,10 @@ def datos_pib(path2):
 
     return(pib)
 
-path=r'Datos'
-path2=r'PIB'
-armas= datos_armas(path)
-pib= datos_pib(path2)
+# path=r'Datos'
+# path2=r'PIB'
+# armas= datos_armas(path)
+# pib= datos_pib(path2)
 # print(armas.head(10))   
 # print(pib.head(10))
 
@@ -57,7 +57,7 @@ def graf_suppliers(armas):
     plt.title("Top 20 Suministradores de armas")
     plt.show()
 
-# graf_suppliers(frame2)
+# graf_suppliers(armas)
 
 def graf_recipients(armas):
 
@@ -70,7 +70,7 @@ def graf_recipients(armas):
     plt.title("Top 20 Receptores de armas")
     plt.show()
 
-# graf_recipients(frame2)
+# graf_recipients(armas)
 
 def graf_mayor_supplier(armas):
 
@@ -94,7 +94,7 @@ def graf_mayor_supplier(armas):
     plt.ylabel("Número de Armas Entregadas")
     plt.show()
 
-# graf_mayor_supplier(frame2)
+# graf_mayor_supplier(armas)
 
 def graf_mayor_recipient(armas):
 
@@ -119,7 +119,7 @@ def graf_mayor_recipient(armas):
     plt.ylabel("Número de Armas Entregadas")
     plt.show()
 
-# graf_mayor_recipient(frame2)
+# graf_mayor_recipient(armas)
 
 def graf_arma(armas):
 
@@ -132,7 +132,7 @@ def graf_arma(armas):
     plt.title("Top 20 Tipos de Armas Entregadas")
     plt.show()
 
-# graf_arma(frame2)
+# graf_arma(armas)
 
 def graf_pib(armas, pib, country):
 
@@ -155,7 +155,6 @@ def graf_arms_gdp(arms_df, pib_df, country):
 
     country_arms = {
         "Estados Unidos": "United States",
-
     }.get(country, country)
     
 
