@@ -32,14 +32,16 @@ def datos_pib(path2):
 
     pib = pd.concat(data, axis=0, ignore_index=True)
 
+    pib = pib.dropna(subset=['Country Name'])
+
     return(pib)
 
-path=r'Datos'
-path2=r'PIB'
-armas= datos_armas(path)
-pib= datos_pib(path2)
-print(armas.head(10))   
-print(pib.head(10))
+# path=r'Datos'
+# path2=r'PIB'
+# armas= datos_armas(path)
+# pib= datos_pib(path2)
+# print(armas.head(10))   
+# print(pib.head(10))
 
 def graf_suppliers(frame2):
 
