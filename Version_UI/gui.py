@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
-import tkintermapview
 from adj_ven import centro
 from tema import apply_theme_to_titlebar
 from tema import window_theme
@@ -11,7 +10,7 @@ from function_lib import datos_armas, datos_pib, graf_suppliers, graf_recipients
 class App:
     def __init__(self, root):
         self.root = root
-        self.root.title("Análisis de calidad del aire de Medellín")
+        self.root.title("Análisis de Intercambios de Armas - ONU")
         # self.root.geometry("900x600")
         centro(self.root, 1690, 950)
         self.menu_visible = False
@@ -70,7 +69,7 @@ class App:
             frame.place_forget()
         self.frames[name].place(x=0, y=0, relwidth=1, relheight=1)
 
-    # Frames individuales
+
     def inicio(self):
         fuente_titulo = ("Arial", 20, "bold")
         fuente_texto = ("Arial", 16, "bold")
@@ -110,10 +109,8 @@ class App:
     def suppliers(self):
 
         path=r'Datos'
-        # path2=r'PIB'
 
         frame2=datos_armas(path)
-        # coordenadas = coord(path2)
 
         fuente_titulo = ("Arial", 20, "bold")
         fuente_texto = ("Arial", 16, "bold")
@@ -135,13 +132,11 @@ class App:
 
         botones = [
             ("Mostrar gráfico"),]
-            # ("Mostrar datos")]
+
 
         def manejar_evento2(evento):
             if evento == "Mostrar gráfico":
                 graf_suppliers(frame2, frame_grafico)             
-            # elif evento == "Mostrar datos":
-            #     mostrar_dataframe(frame2, frame_grafico)
 
         for texto in botones:
             boton = tk.Button(
@@ -157,10 +152,8 @@ class App:
     def recipients(self):
 
         path=r'Datos'
-        # path2=r'PIB'
 
         frame2=datos_armas(path)
-        # coordenadas = coord(path2)
 
         fuente_titulo = ("Arial", 20, "bold")
         fuente_texto = ("Arial", 16, "bold")

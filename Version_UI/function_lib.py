@@ -51,13 +51,6 @@ def datos_pib(path2):
 
     return(pib)
 
-# path=r'Datos'
-# path2=r'PIB'
-# armas= datos_armas(path)
-# pib= datos_pib(path2)
-# print(armas.head(10))   
-# print(pib.head(10))
-
 
 
 def tema():
@@ -84,15 +77,12 @@ def graf_suppliers(armas,frame_grafico):
     
     fig = plt.figure(figsize=(10,5))
     plt.bar(supplier_totals.index, supplier_totals.values, color="blue")
-    plt.xticks(rotation=90)
+    plt.xticks(rotation=45)
     plt.title("Top 20 Suministradores de armas")
-    # plt.show()
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
     canvas.get_tk_widget().pack(fill="both", expand=True)
-
-# graf_suppliers(armas)
 
 
 
@@ -108,15 +98,12 @@ def graf_recipients(armas,frame_grafico):
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(20)
     fig= plt.figure(figsize=(10,5))
     plt.bar(recipient_totals.index, recipient_totals.values, color="red")
-    plt.xticks(rotation=90)
+    plt.xticks(rotation=45)
     plt.title("Top 20 Receptores de armas")
-    # plt.show()
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
     canvas.get_tk_widget().pack(fill="both", expand=True)
-
-# graf_recipients(armas)
 
 
 
@@ -151,8 +138,6 @@ def graf_mayor_supplier(armas,frame_grafico):
     canvas.draw()
     canvas.get_tk_widget().pack(fill="both", expand=True)
 
-# graf_mayor_supplier(armas)
-
 
 
 def graf_mayor_recipient(armas,frame_grafico):
@@ -181,13 +166,10 @@ def graf_mayor_recipient(armas,frame_grafico):
     plt.xticks(rotation=45)
     plt.title(f"Mayor Receptor: {top_recipient} y sus Top 5 Suministradores")
     plt.ylabel("Número de Armas Entregadas")
-    # plt.show()
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
     canvas.get_tk_widget().pack(fill="both", expand=True)
-
-# graf_mayor_recipient(armas)
 
 
 
@@ -205,13 +187,10 @@ def graf_arma(armas, frame_grafico):
     plt.bar(weapons_totals.index, weapons_totals.values, color="green")
     plt.xticks(rotation=60)
     plt.title("Top 20 Tipos de Armas Entregadas")
-    # plt.show()
     
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
     canvas.get_tk_widget().pack(fill="both", expand=True)
-
-# graf_arma(armas)
 
 
 
@@ -235,7 +214,6 @@ def graf_pib(armas, pib, country, frame_grafico):
     plt.title(f"PIB de {country}")
     plt.xlabel("Año")
     plt.ylabel("PIB (US$)")
-    # plt.show()
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
@@ -285,10 +263,7 @@ def graf_arms_gdp(arms_df, pib_df, country, frame_grafico):
     
     plt.title(f'PIB y Distribución de Armas de {country} (1960-2024)')
     plt.grid(True)
-    # plt.show()
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
     canvas.get_tk_widget().pack(fill="both", expand=True)
-
-# graf_arms_gdp(armas, pib, "Estados Unidos")
