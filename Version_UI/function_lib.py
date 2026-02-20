@@ -13,6 +13,8 @@ import sv_ttk
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 
+
+
 def datos_armas(path):
 
     all_files = glob.glob(os.path.join(path + "/*.csv"))
@@ -28,6 +30,8 @@ def datos_armas(path):
     frame2=frame.drop(['a', 'b', 'c'], axis=1)
 
     return(frame2)
+
+
 
 def datos_pib(path2):
 
@@ -54,6 +58,8 @@ def datos_pib(path2):
 # print(armas.head(10))   
 # print(pib.head(10))
 
+
+
 def graf_suppliers(armas,frame_grafico):
 
     frame2 = armas.dropna(subset=['Number delivered'])
@@ -72,6 +78,8 @@ def graf_suppliers(armas,frame_grafico):
 
 # graf_suppliers(armas)
 
+
+
 def graf_recipients(armas,frame_grafico):
 
     frame2 = armas.dropna(subset=['Number delivered'])
@@ -88,6 +96,8 @@ def graf_recipients(armas,frame_grafico):
     canvas.get_tk_widget().pack(fill="both", expand=True)
 
 # graf_recipients(armas)
+
+
 
 def graf_mayor_supplier(armas,frame_grafico):
 
@@ -109,13 +119,15 @@ def graf_mayor_supplier(armas,frame_grafico):
     plt.xticks(rotation=45)
     plt.title(f"Mayor Suministrador: {top_supplier} y sus Top 5 Receptores")
     plt.ylabel("Número de Armas Entregadas")
-    plt.show()
+    # plt.show()
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
     canvas.get_tk_widget().pack(fill="both", expand=True)
 
 # graf_mayor_supplier(armas)
+
+
 
 def graf_mayor_recipient(armas):
 
@@ -140,22 +152,34 @@ def graf_mayor_recipient(armas):
     plt.ylabel("Número de Armas Entregadas")
     plt.show()
 
+    canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True)
+
 # graf_mayor_recipient(armas)
 
-def graf_arma(armas):
+
+
+def graf_arma(armas, frame_grafico):
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
     weapons_totals = frame2.groupby('Weapon designation')['Number delivered'].sum().sort_values(ascending=False).head(20)
-    plt.figure(figsize=(10,5))
+    fig = plt.figure(figsize=(10,5))
     plt.bar(weapons_totals.index, weapons_totals.values, color="green")
     plt.xticks(rotation=60)
     plt.title("Top 20 Tipos de Armas Entregadas")
-    plt.show()
+    # plt.show()
+    
+    canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True)
 
 # graf_arma(armas)
 
-def graf_pib(armas, pib, country):
+
+
+def graf_pib(armas, pib, country, frame_grafico):
 
     row = pib[pib['Country Name'] == country]
     if row.empty:
@@ -165,14 +189,20 @@ def graf_pib(armas, pib, country):
     years = [int(col) for col in year_cols]
     values = row[year_cols].values.flatten()
     values = pd.to_numeric(values, errors='coerce')
-    plt.figure(figsize=(10,5))
+    fig = plt.figure(figsize=(10,5))
     plt.plot(years, values)
     plt.title(f"PIB de {country}")
     plt.xlabel("Año")
     plt.ylabel("PIB (US$)")
-    plt.show()
+    # plt.show()
 
-def graf_arms_gdp(arms_df, pib_df, country):
+    canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True)
+
+
+
+def graf_arms_gdp(arms_df, pib_df, country, frame_grafico):
 
     country_arms = {
         "Estados Unidos": "United States",
@@ -209,6 +239,10 @@ def graf_arms_gdp(arms_df, pib_df, country):
     
     plt.title(f'PIB y Distribución de Armas de {country} (1960-2024)')
     plt.grid(True)
-    plt.show()
+    # plt.show()
+
+    canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True)
 
 # graf_arms_gdp(armas, pib, "Estados Unidos")
