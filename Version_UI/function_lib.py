@@ -60,8 +60,21 @@ def datos_pib(path2):
 
 
 
+def tema():
+
+    tema_actual = darkdetect.theme()
+
+    if tema_actual == "Dark":
+        plt.style.use("dark_background")
+    else:
+        plt.style.use("default")
+
+
+
 def graf_suppliers(armas,frame_grafico):
     
+    tema()
+
     for widget in frame_grafico.winfo_children():
         widget.destroy()
 
@@ -85,6 +98,8 @@ def graf_suppliers(armas,frame_grafico):
 
 def graf_recipients(armas,frame_grafico):
 
+    tema()
+
     for widget in frame_grafico.winfo_children():
         widget.destroy()
 
@@ -106,6 +121,8 @@ def graf_recipients(armas,frame_grafico):
 
 
 def graf_mayor_supplier(armas,frame_grafico):
+
+    tema()
 
     for widget in frame_grafico.winfo_children():
         widget.destroy()
@@ -139,6 +156,8 @@ def graf_mayor_supplier(armas,frame_grafico):
 
 
 def graf_mayor_recipient(armas,frame_grafico):
+
+    tema()
 
     for widget in frame_grafico.winfo_children():
         widget.destroy()
@@ -174,6 +193,8 @@ def graf_mayor_recipient(armas,frame_grafico):
 
 def graf_arma(armas, frame_grafico):
 
+    tema()
+
     for widget in frame_grafico.winfo_children():
         widget.destroy()
 
@@ -195,6 +216,8 @@ def graf_arma(armas, frame_grafico):
 
 
 def graf_pib(armas, pib, country, frame_grafico):
+
+    tema()
 
     for widget in frame_grafico.winfo_children():
         widget.destroy()
@@ -221,6 +244,8 @@ def graf_pib(armas, pib, country, frame_grafico):
 
 
 def graf_arms_gdp(arms_df, pib_df, country, frame_grafico):
+
+    tema()
 
     for widget in frame_grafico.winfo_children():
         widget.destroy()
