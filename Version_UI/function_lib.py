@@ -61,7 +61,10 @@ def datos_pib(path2):
 
 
 def graf_suppliers(armas,frame_grafico):
-
+    
+    for widget in frame_grafico.winfo_children():
+        widget.destroy()
+        
     frame2 = armas.dropna(subset=['Number delivered'])
 
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(20)
