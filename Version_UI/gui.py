@@ -31,6 +31,7 @@ class App:
             "Inicio": self.inicio(),
             "Mayores proveedores": self.suppliers(),
             "Mayores receptores": self.recipients(),
+            "Armas vs PIB": self.graf_arm_pib(),
             # "Mayor proveedor":self.mapa(),
             # "Mayor receptor":self.mapa2(),            
             "Salir": self.salir()
@@ -194,7 +195,51 @@ class App:
 
         return frame
 
+    def graf_arm_pib(self):
 
+        path = r'Datos'
+        path2 = r'PIB'
+        frame2 = datos_armas(path)
+        pib = datos_pib(path2)
+
+        fuente_titulo = ("Arial", 20, "bold")
+        fuente_texto = ("Arial", 16, "bold")
+        fuente_descripcion = ("Arial", 14)
+
+        frame = tk.Frame(self.container, bg="white")
+        label = tk.Label(frame, text="Análisis de receptores de armas", font=("Arial", 24))
+        label.pack(pady=20)
+ 
+        titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico de los receptores de armas más importantes.",
+                        font=fuente_descripcion, wraplength=700, justify="center")
+        titulo.pack(pady=10)
+
+        frame_grafico = tk.Frame(frame)
+        frame_grafico.pack(pady=20, fill="both", expand=True)
+        
+        frame_botones = tk.Frame(frame)
+        frame_botones.pack(pady=10)
+
+        botones = [
+            ("Mostrar gráfico"),]
+            # ("Mostrar datos")]
+
+        def manejar_evento2(evento):
+            if evento == "Mostrar gráfico":
+                graf_arm_pib(frame2, pib, "United States", frame_grafico)             
+            # elif evento == "Mostrar datos":
+            #     mostrar_dataframe(frame2, frame_grafico)
+
+        for texto in botones:
+            boton = tk.Button(
+                frame_botones,
+                text=texto,
+                width=20,
+                command=lambda t=texto: manejar_evento2(t),
+            )
+            boton.pack(side="left", padx=5)
+
+        return frame
 
     def salir(self):
         frame = tk.Frame(self.container, bg="white")
