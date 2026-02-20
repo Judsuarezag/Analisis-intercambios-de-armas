@@ -31,8 +31,8 @@ class App:
         self.frames = {
             "Inicio": self.inicio(),
             "Mayores proveedores": self.suppliers(),
-            # "Mayores receptores": self.recipients(),
-            "Mayor proveedor":self.mapa(),
+            "Mayores receptores": self.recipients(),
+            # "Mayor proveedor":self.mapa(),
             # "Mayor receptor":self.mapa2(),            
             "Salir": self.salir()
         }
@@ -326,13 +326,13 @@ class App:
 
     #     return frame
 
-    # def salir(self):
-    #     frame = tk.Frame(self.container, bg="white")
-    #     label = tk.Label(frame, text="🚪 ¿Deseas salir?", font=("Arial", 24))
-    #     label.pack(pady=20)
-    #     btn_salir = tk.Button(frame, text="Cerrar aplicación", command=self.root.destroy)
-    #     btn_salir.pack(pady=10)
-    #     return frame
+    def salir(self):
+        frame = tk.Frame(self.container, bg="white")
+        label = tk.Label(frame, text="🚪 ¿Deseas salir?", font=("Arial", 24))
+        label.pack(pady=20)
+        btn_salir = tk.Button(frame, text="Cerrar aplicación", command=self.root.destroy)
+        btn_salir.pack(pady=10)
+        return frame
 
 # if __name__ == "__main__":
 #     root = tk.Tk()
