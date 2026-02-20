@@ -226,7 +226,7 @@ class App:
 
         def manejar_evento2(evento):
             if evento == "Mostrar gráfico":
-                graf_arm_pib(frame2, pib, "United States", frame_grafico)             
+                graf_arms_gdp(frame2, pib, "United States", frame_grafico)             
             # elif evento == "Mostrar datos":
             #     mostrar_dataframe(frame2, frame_grafico)
 
