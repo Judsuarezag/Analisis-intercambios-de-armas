@@ -12,7 +12,7 @@ class App:
         self.root = root
         self.root.title("Análisis de Intercambios de Armas - ONU")
         # self.root.geometry("900x600")
-        centro(self.root, 1690, 950)
+        centro(self.root, 1280, 720)
         self.menu_visible = False
         self.menu_width = 170
 
