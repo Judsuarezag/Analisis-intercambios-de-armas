@@ -89,7 +89,7 @@ class App:
 
         titulo_desc = tk.Label(
             frame,
-            text="Análsis de los datos provenientes del SIATA",
+            text="Análisis de datos de la ONU sobre el comercio de armas",
             font=fuente_texto,
         )
         titulo_desc.pack(pady=10)
@@ -120,10 +120,10 @@ class App:
         fuente_descripcion = ("Arial", 14)
 
         frame = tk.Frame(self.container, bg="white")
-        label = tk.Label(frame, text="Análisis en todas las estaciones del SIATA", font=("Arial", 24))
+        label = tk.Label(frame, text="Análisis de proveedores de armas", font=("Arial", 24))
         label.pack(pady=20)
  
-        titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico de los valores diarios promedio para todos los contaminantes en todas las estaciones en la base de datos, además también puede visualizar las primeras 40 filas de los datos utilizados en este análisis, usando los botones para mostrar el gráfico y los datos respectivamente.",
+        titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico de los proveedores de armas más importantes.",
                         font=fuente_descripcion, wraplength=700, justify="center")
         titulo.pack(pady=10)
 
@@ -167,10 +167,10 @@ class App:
         fuente_descripcion = ("Arial", 14)
 
         frame = tk.Frame(self.container, bg="white")
-        label = tk.Label(frame, text="Análisis en todas las estaciones del SIATA", font=("Arial", 24))
+        label = tk.Label(frame, text="Análisis de receptores de armas", font=("Arial", 24))
         label.pack(pady=20)
  
-        titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico de los valores diarios promedio para todos los contaminantes en todas las estaciones en la base de datos, además también puede visualizar las primeras 40 filas de los datos utilizados en este análisis, usando los botones para mostrar el gráfico y los datos respectivamente.",
+        titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico de los receptores de armas más importantes.",
                         font=fuente_descripcion, wraplength=700, justify="center")
         titulo.pack(pady=10)
 
