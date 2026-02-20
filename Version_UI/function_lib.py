@@ -60,7 +60,7 @@ def graf_suppliers(armas,frame_grafico):
 
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(20)
     
-    plt.figure(figsize=(10,5))
+    fig = plt.figure(figsize=(10,5))
     plt.bar(supplier_totals.index, supplier_totals.values, color="blue")
     plt.xticks(rotation=90)
     plt.title("Top 20 Suministradores de armas")
@@ -77,7 +77,7 @@ def graf_recipients(armas,frame_grafico):
     frame2 = armas.dropna(subset=['Number delivered'])
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(20)
-    plt.figure(figsize=(10,5))
+    fig= plt.figure(figsize=(10,5))
     plt.bar(recipient_totals.index, recipient_totals.values, color="red")
     plt.xticks(rotation=90)
     plt.title("Top 20 Receptores de armas")
@@ -104,7 +104,7 @@ def graf_mayor_supplier(armas,frame_grafico):
     labels = [top_supplier] + list(recipient_totals.index)
     values = [top_value] + list(recipient_totals.values)
 
-    plt.figure(figsize=(10,5))
+    fig = plt.figure(figsize=(10,5))
     plt.bar(labels, values, color=['blue', 'red', 'green', 'orange', 'purple'])
     plt.xticks(rotation=45)
     plt.title(f"Mayor Suministrador: {top_supplier} y sus Top 5 Receptores")
@@ -132,7 +132,7 @@ def graf_mayor_recipient(armas):
     labels = [top_recipient] + list(supplier_totals.index)
     values = [top_value] + list(supplier_totals.values)
 
-    plt.figure(figsize=(10,5))
+    fig = plt.figure(figsize=(10,5))
     colors = ['blue', 'red', 'green', 'orange', 'purple']
     plt.bar(labels, values, color=colors[:len(labels)])
     plt.xticks(rotation=45)
