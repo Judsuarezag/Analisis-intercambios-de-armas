@@ -85,6 +85,9 @@ def graf_suppliers(armas,frame_grafico):
 
 def graf_recipients(armas,frame_grafico):
 
+    for widget in frame_grafico.winfo_children():
+        widget.destroy()
+
     frame2 = armas.dropna(subset=['Number delivered'])
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(20)
@@ -103,6 +106,9 @@ def graf_recipients(armas,frame_grafico):
 
 
 def graf_mayor_supplier(armas,frame_grafico):
+
+    for widget in frame_grafico.winfo_children():
+        widget.destroy()
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
@@ -168,6 +174,9 @@ def graf_mayor_recipient(armas,frame_grafico):
 
 def graf_arma(armas, frame_grafico):
 
+    for widget in frame_grafico.winfo_children():
+        widget.destroy()
+
     frame2 = armas.dropna(subset=['Number delivered'])
 
     weapons_totals = frame2.groupby('Weapon designation')['Number delivered'].sum().sort_values(ascending=False).head(20)
@@ -186,6 +195,9 @@ def graf_arma(armas, frame_grafico):
 
 
 def graf_pib(armas, pib, country, frame_grafico):
+
+    for widget in frame_grafico.winfo_children():
+        widget.destroy()
 
     row = pib[pib['Country Name'] == country]
     if row.empty:
@@ -209,6 +221,9 @@ def graf_pib(armas, pib, country, frame_grafico):
 
 
 def graf_arms_gdp(arms_df, pib_df, country, frame_grafico):
+
+    for widget in frame_grafico.winfo_children():
+        widget.destroy()
 
     country_arms = {
         "Estados Unidos": "United States",
