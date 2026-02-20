@@ -64,7 +64,7 @@ def graf_suppliers(armas,frame_grafico):
     
     for widget in frame_grafico.winfo_children():
         widget.destroy()
-        
+
     frame2 = armas.dropna(subset=['Number delivered'])
 
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(20)
@@ -132,7 +132,10 @@ def graf_mayor_supplier(armas,frame_grafico):
 
 
 
-def graf_mayor_recipient(armas):
+def graf_mayor_recipient(armas,frame_grafico):
+
+    for widget in frame_grafico.winfo_children():
+        widget.destroy()
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
@@ -153,7 +156,7 @@ def graf_mayor_recipient(armas):
     plt.xticks(rotation=45)
     plt.title(f"Mayor Receptor: {top_recipient} y sus Top 5 Suministradores")
     plt.ylabel("Número de Armas Entregadas")
-    plt.show()
+    # plt.show()
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
