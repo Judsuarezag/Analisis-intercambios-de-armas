@@ -13,12 +13,3 @@ from function_lib import datos_armas, datos_pib, graf_suppliers, graf_recipients
 root = tk.Tk()
 app = App(root)
 root.mainloop()
-
-# path=r'Datos'
-# path2=r'PIB'
-# armas= datos_armas(path)
-# pib= datos_pib(path2)
-# print(armas.head(10))   
-# print(pib.head(10))
-
-# graf_arms_gdp(armas, pib, "Estados Unidos")

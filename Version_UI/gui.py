@@ -82,7 +82,7 @@ class App:
 
         nombres = tk.Label(
             frame,
-            text="Juan Diego Suárez Agualimpia \nDavid Hurtado",
+            text="Juan Diego Suárez Agualimpia \nDaniel Hurtado",
             font=fuente_texto,justify="center"
         )
         nombres.pack(pady=10)
