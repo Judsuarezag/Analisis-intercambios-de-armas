@@ -97,7 +97,7 @@ class App:
         descripcion = tk.Label(
             frame,
             text=(
-                "El Sistema de Alerta Temprana de Medellín y el Valle de Aburrá (SIATA) es un sistema que busca prevenir y mitigar los efectos de la contaminación del aire en la región. Este análisis se centra en los datos recopilados por el SIATA, que incluyen información sobre la calidad del aire, las condiciones meteorológicas y otros factores relevantes. El objetivo es proporcionar una visión general de la calidad del aire en Medellín y su evolución a lo largo del tiempo."
+                "La ONU lleva un registro de los intercambios de armas a nivel mundial, y en esta aplicación se han analizado los datos de este registro para identificar los principales proveedores y receptores de armas a lo largo del tiempo. Además, se han explorado las tendencias en el comercio de armas, incluyendo los tipos de armas más comercializadas y las regiones geográficas involucradas. Este análisis proporciona una visión general de cómo se ha desarrollado el comercio de armas a nivel global y cuáles son los actores clave en este ámbito."
             ),
             font=fuente_descripcion,
             wraplength=700,

@@ -64,7 +64,7 @@ def graf_suppliers(armas,frame_grafico):
     plt.bar(supplier_totals.index, supplier_totals.values, color="blue")
     plt.xticks(rotation=90)
     plt.title("Top 20 Suministradores de armas")
-    plt.show()
+    # plt.show()
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
@@ -81,7 +81,7 @@ def graf_recipients(armas,frame_grafico):
     plt.bar(recipient_totals.index, recipient_totals.values, color="red")
     plt.xticks(rotation=90)
     plt.title("Top 20 Receptores de armas")
-    plt.show()
+    # plt.show()
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
