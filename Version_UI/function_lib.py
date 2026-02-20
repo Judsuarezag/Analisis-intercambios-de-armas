@@ -4,6 +4,15 @@ import matplotlib.pyplot as plt
 import glob
 import os
 
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
+import darkdetect
+import tkinter as tk
+from tkinter import ttk
+import sv_ttk
+import ttkbootstrap as tb
+from ttkbootstrap.constants import *
+
 def datos_armas(path):
 
     all_files = glob.glob(os.path.join(path + "/*.csv"))
@@ -45,7 +54,7 @@ def datos_pib(path2):
 # print(armas.head(10))   
 # print(pib.head(10))
 
-def graf_suppliers(armas):
+def graf_suppliers(armas,frame_grafico):
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
@@ -57,9 +66,13 @@ def graf_suppliers(armas):
     plt.title("Top 20 Suministradores de armas")
     plt.show()
 
+    canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True)
+
 # graf_suppliers(armas)
 
-def graf_recipients(armas):
+def graf_recipients(armas,frame_grafico):
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
@@ -70,9 +83,13 @@ def graf_recipients(armas):
     plt.title("Top 20 Receptores de armas")
     plt.show()
 
+    canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True)
+
 # graf_recipients(armas)
 
-def graf_mayor_supplier(armas):
+def graf_mayor_supplier(armas,frame_grafico):
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
@@ -93,6 +110,10 @@ def graf_mayor_supplier(armas):
     plt.title(f"Mayor Suministrador: {top_supplier} y sus Top 5 Receptores")
     plt.ylabel("Número de Armas Entregadas")
     plt.show()
+
+    canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True)
 
 # graf_mayor_supplier(armas)
 
