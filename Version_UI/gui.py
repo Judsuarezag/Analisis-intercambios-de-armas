@@ -31,8 +31,8 @@ class App:
             "Inicio": self.inicio(),
             "Mayores proveedores": self.suppliers(),
             "Mayores receptores": self.recipients(),
-            "Mayor proveedor vs Receptores": self.mayor_supplier(),
-            "Mayor receptor vs Proveedores": self.mayor_recepient(),
+            "Mayor proveedor vs \nReceptores": self.mayor_supplier(),
+            "Mayor receptor vs \nProveedores": self.mayor_recepient(),
             "Entrega vs PIB": self.graf_arm_pib(),
             "Recepción vs PIB": self.graf_recibido_pib(), 
             "Salir": self.salir()
@@ -42,7 +42,7 @@ class App:
         for i, texto in enumerate(opciones):
             btn = tb.Button(self.menu_frame, text=texto, bootstyle="secondary", width=20,
                             command=lambda name=texto: self.mostrar_frame(name))
-            btn.place(x=10, y=60 + i * 60, height=40)
+            btn.place(x=10, y=60 + i * 60, height=50)
 
         self.mostrar_frame("Inicio")
         apply_theme_to_titlebar(self.root)
@@ -78,12 +78,12 @@ class App:
         fuente_descripcion = ("Arial", 14)
 
         frame = tk.Frame(self.container, bg="white")
-        label = tk.Label(frame, text="🏠 Bienvenido al Inicio", font=("Arial", 24), justify="center")
+        label = tk.Label(frame, text="🏠 Bienvenido", font=("Arial", 24), justify="center")
         label.pack(pady=20)
 
         nombres = tk.Label(
             frame,
-            text="Juan Diego Suárez Agualimpia \nDaniel Hurtado",
+            text="Creado por: \nJuan Diego Suárez Agualimpia \nDaniel Hurtado",
             font=fuente_texto,justify="center"
         )
         nombres.pack(pady=10)
