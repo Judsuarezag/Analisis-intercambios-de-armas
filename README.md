@@ -33,8 +33,8 @@ Este proyecto analiza las bases de datos de la ONU sobre intercambios de armas a
 - Análisis de Relaciones Clave: Para el mayor proveedor global, se muestran sus top 5 receptores; para el mayor receptor, sus top 5 proveedores.
 - Tipos de Armas: Clasificación de los top 20 tipos de armas más entregadas.
 - Relación con el PIB:
-   _Gráficos de evolución del PIB de países seleccionados.
-   _Comparaciones entre PIB y distribución de armas (para proveedores) o recepción de armas (para receptores), desde 1960 hasta 2024, usando ejes duales para visualizar tendencias económicas y armamentísticas.
+   - Gráficos de evolución del PIB de países seleccionados.
+   - Comparaciones entre PIB y distribución de armas (para proveedores) o recepción de armas (para receptores), desde 1960 hasta 2024, usando ejes duales para visualizar tendencias económicas y armamentísticas.
 - Datos Procesados: Los datos se limpian y agrupan por países, años y tipos de armas, eliminando valores nulos y enfocándose en entregas/órdenes de armas.
 El objetivo es comprender dinámicas globales del comercio de armas, actores clave y su vínculo con el crecimiento económico.
 
