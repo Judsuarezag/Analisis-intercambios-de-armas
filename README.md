@@ -63,4 +63,5 @@ El proyecto cuenta con dos versiones para ejecutar los análisis, permitiendo fl
   - Opción para salir de la aplicación.
 - **Ventajas:** Experiencia nativa de escritorio, con navegación intuitiva y personalización visual; no requiere navegador.
 - **Requisitos:** Instalar librerías como ttkbootstrap, pandas, numpy, matplotlib, y dependencias adicionales, como se explica en la sección de requisitos previos.
+
 Ambas versiones usan las mismas funciones de procesamiento de datos (data.py o function_lib.py), asegurando consistencia en los resultados. El proyecto es portable y puede ejecutarse en Windows (como se indica en el README), con datos en formato CSV.
