@@ -42,16 +42,16 @@ Capacidades del Proyecto
 El proyecto cuenta con dos versiones para ejecutar los análisis, permitiendo flexibilidad en el acceso a los resultados.
 
 1. Ejecución a través de Streamlit (Versión Web Interactiva)
-Archivo Principal: Version_Streamlit/streamlit_app.py.
-Capacidades:
-Interfaz web accesible desde un navegador (ejecutable con streamlit run streamlit_app.py).
-Gráficos interactivos generados con Matplotlib, mostrados directamente en la app.
-Secciones dedicadas para cada análisis (proveedores, receptores, tipos de armas, etc.).
-Selectores interactivos (selectboxes) para elegir países en gráficos relacionados con PIB (e.g., PIB de un país específico o comparación PIB vs. armas para proveedores/receptores).
-Carga automática de datos desde carpetas Datos (armas) y PIB (económicos).
-Incluye una introducción con información del proyecto y autores.
-Ventajas: Fácil de compartir, no requiere instalación adicional en el navegador, ideal para presentaciones o acceso remoto.
-Requisitos: Instalar Streamlit (pip install streamlit) y las dependencias (pandas, numpy, matplotlib).
+- Archivo Principal: Version_Streamlit/Intercambio_de_armas.py.
+- Capacidades:
+  - Interfaz web accesible desde un navegador (ejecutable con streamlit run streamlit_app.py).
+  - Gráficos interactivos generados con Matplotlib, mostrados directamente en la app.
+  - Secciones dedicadas para cada análisis (proveedores, receptores, tipos de armas, etc.).
+  - Selectores interactivos (selectboxes) para elegir países en gráficos relacionados con PIB (e.g., PIB de un país específico o comparación PIB vs. armas para proveedores/receptores).
+  - Carga automática de datos desde carpetas Datos (armas) y PIB (económicos).
+  - ncluye una introducción con información del proyecto y autores.
+- Ventajas: Fácil de compartir, no requiere instalación adicional en el navegador, ideal para presentaciones o acceso remoto.
+- Requisitos: Instalar Streamlit (pip install streamlit) y las dependencias (pandas, numpy, matplotlib).
 2. Ejecución a través de Interfaz de Usuario (Versión de Escritorio)
 Archivo Principal: main.py.
 Capacidades:
