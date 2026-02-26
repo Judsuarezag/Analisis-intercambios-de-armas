@@ -52,14 +52,14 @@ El proyecto cuenta con dos versiones para ejecutar los análisis, permitiendo fl
 - **Ventajas:** Fácil de compartir, no requiere instalación adicional en el navegador, ideal para presentaciones o acceso remoto.
 - **Requisitos:** Instalar Streamlit (pip install streamlit) y las dependencias (pandas, numpy, matplotlib).
 ### 2. Ejecución a través de Interfaz de Usuario (Versión de Escritorio)
-Archivo Principal: main.py.
-Capacidades:
-Interfaz gráfica de escritorio usando Tkinter con ttkbootstrap para un diseño moderno y responsivo (incluye temas oscuros/claros y personalización de la barra de título en Windows).
-Menú lateral deslizable con opciones para cada análisis (Inicio, Proveedores, Receptores, etc.).
-Botones para mostrar gráficos en ventanas dedicadas; los gráficos se generan con Matplotlib y se integran en frames de la GUI.
-Funcionalidad para seleccionar países en análisis de PIB vs. armas (usando comboboxes o inputs).
-Ventana de inicio con descripción del proyecto, autores y resumen.
-Opción para salir de la aplicación.
-Ventajas: Experiencia nativa de escritorio, con navegación intuitiva y personalización visual; no requiere navegador.
-Requisitos: Instalar librerías como ttkbootstrap, pandas, numpy, matplotlib, y dependencias adicionales (ver README.md para comandos de instalación).
+- **Archivo Principal:** main.py.
+- **Capacidades:**
+  - Interfaz gráfica de escritorio usando Tkinter con ttkbootstrap para un diseño moderno y responsivo (incluye temas oscuros/claros y personalización de la barra de título en Windows).
+  - Menú lateral deslizable con opciones para cada análisis (Inicio, Proveedores, Receptores, etc.).
+  - Botones para mostrar gráficos en ventanas dedicadas; los gráficos se generan con Matplotlib y se integran en frames de la GUI.
+  - Funcionalidad para seleccionar países en análisis de PIB vs. armas (usando comboboxes o inputs).
+  - Ventana de inicio con descripción del proyecto, autores y resumen.
+  - Opción para salir de la aplicación.
+- **Ventajas:** Experiencia nativa de escritorio, con navegación intuitiva y personalización visual; no requiere navegador.
+- **Requisitos:** Instalar librerías como ttkbootstrap, pandas, numpy, matplotlib, y dependencias adicionales, como se explica en la sección de requisitos previos.
 Ambas versiones usan las mismas funciones de procesamiento de datos (data.py o function_lib.py), asegurando consistencia en los resultados. El proyecto es portable y puede ejecutarse en Windows (como se indica en el README), con datos en formato CSV.
