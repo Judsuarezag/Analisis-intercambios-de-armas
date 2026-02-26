@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import glob
 import os
 
+
 def datos_armas(path):
 
     all_files = glob.glob(os.path.join(path + "/*.csv"))
@@ -19,6 +20,7 @@ def datos_armas(path):
     frame2=frame.drop(['a', 'b', 'c'], axis=1)
 
     return(frame2)
+
 
 def datos_pib(path2):
 
@@ -38,12 +40,6 @@ def datos_pib(path2):
 
     return(pib)
 
-# path=r'Datos'
-# path2=r'PIB'
-# armas= datos_armas(path)
-# pib= datos_pib(path2)
-# print(armas.head(10))   
-# print(pib.head(10))
 
 def graf_suppliers(armas):
 
@@ -55,9 +51,7 @@ def graf_suppliers(armas):
     plt.bar(supplier_totals.index, supplier_totals.values, color="blue")
     plt.xticks(rotation=90)
     plt.title("Top 20 Suministradores de armas")
-    # plt.show()
 
-# graf_suppliers(armas)
 
 def graf_recipients(armas):
 
@@ -68,9 +62,7 @@ def graf_recipients(armas):
     plt.bar(recipient_totals.index, recipient_totals.values, color="red")
     plt.xticks(rotation=90)
     plt.title("Top 20 Receptores de armas")
-    # plt.show()
 
-# graf_recipients(armas)
 
 def graf_mayor_supplier(armas):
 
@@ -92,9 +84,7 @@ def graf_mayor_supplier(armas):
     plt.xticks(rotation=45)
     plt.title(f"Mayor Suministrador: {top_supplier} y sus Top 5 Receptores")
     plt.ylabel("Número de Armas Entregadas")
-    # plt.show()
 
-# graf_mayor_supplier(armas)
 
 def graf_mayor_recipient(armas):
 
@@ -117,9 +107,7 @@ def graf_mayor_recipient(armas):
     plt.xticks(rotation=45)
     plt.title(f"Mayor Receptor: {top_recipient} y sus Top 5 Suministradores")
     plt.ylabel("Número de Armas Entregadas")
-    # plt.show()
 
-# graf_mayor_recipient(armas)
 
 def graf_arma(armas):
 
@@ -130,9 +118,7 @@ def graf_arma(armas):
     plt.bar(weapons_totals.index, weapons_totals.values, color="green")
     plt.xticks(rotation=60)
     plt.title("Top 20 Tipos de Armas Entregadas")
-    # plt.show()
 
-# graf_arma(armas)
 
 def graf_pib(armas, pib, country):
 
@@ -149,7 +135,7 @@ def graf_pib(armas, pib, country):
     plt.title(f"PIB de {country}")
     plt.xlabel("Año")
     plt.ylabel("PIB (US$)")
-    # plt.show()
+
 
 def graf_arms_gdp(armas, pib, country):
 
@@ -194,9 +180,7 @@ def graf_arms_gdp(armas, pib, country):
     
     plt.title(f'PIB y Distribución de Armas de {country} (1960-2024)')
     plt.grid(True)
-    # plt.show()
 
-# graf_arms_gdp(armas, pib, "Estados Unidos")
 
 def graf_rece_gdp(armas, pib, country):
 

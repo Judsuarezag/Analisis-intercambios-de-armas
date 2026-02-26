@@ -202,6 +202,16 @@ class App:
         frame2 = datos_armas(path)
         pib = datos_pib(path2)
 
+        country_arms = [
+            "Estados Unidos",
+            "Reino Unido",
+            "Francia",
+            "Alemania",
+            "Rusia",
+            "China",
+            "India",
+        ]
+
         fuente_titulo = ("Arial", 20, "bold")
         fuente_texto = ("Arial", 16, "bold")
         fuente_descripcion = ("Arial", 14)
@@ -213,6 +223,9 @@ class App:
         titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico de los receptores de armas más importantes.",
                         font=fuente_descripcion, wraplength=700, justify="center")
         titulo.pack(pady=10)
+
+        combobox = ttk.Combobox(frame, values=country_arms, state="readonly", font=fuente_texto)
+        combobox.pack(pady=10)
 
         frame_grafico = tk.Frame(frame)
         frame_grafico.pack(pady=20, fill="both", expand=True)
@@ -226,7 +239,11 @@ class App:
 
         def manejar_evento2(evento):
             if evento == "Mostrar gráfico":
-                graf_arms_gdp(frame2, pib, "Estados Unidos", frame_grafico)             
+                selected_country = combobox.get()
+                if selected_country in country_arms:
+                    graf_arms_gdp(frame2, pib, selected_country, frame_grafico)             
+                else:
+                    print("País no válido")
             # elif evento == "Mostrar datos":
             #     mostrar_dataframe(frame2, frame_grafico)
 
