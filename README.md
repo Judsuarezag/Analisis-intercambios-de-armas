@@ -50,7 +50,7 @@ El proyecto cuenta con dos versiones para ejecutar los análisis, permitiendo fl
   - Selectores interactivos (selectboxes) para elegir países en gráficos relacionados con PIB (e.g., PIB de un país específico o comparación PIB vs. armas para proveedores/receptores).
   - Carga automática de datos desde carpetas Datos (armas) y PIB (económicos).
   - ncluye una introducción con información del proyecto y autores.
-- Ventajas: Fácil de compartir, no requiere instalación adicional en el navegador, ideal para presentaciones o acceso remoto.
+- ** Ventajas **: Fácil de compartir, no requiere instalación adicional en el navegador, ideal para presentaciones o acceso remoto.
 - Requisitos: Instalar Streamlit (pip install streamlit) y las dependencias (pandas, numpy, matplotlib).
 2. Ejecución a través de Interfaz de Usuario (Versión de Escritorio)
 Archivo Principal: main.py.
