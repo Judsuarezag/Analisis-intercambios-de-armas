@@ -5,7 +5,7 @@ from ttkbootstrap.constants import *
 from adj_ven import centro
 from tema import apply_theme_to_titlebar
 from tema import window_theme
-from function_lib import datos_armas, datos_pib, graf_suppliers, graf_recipients, graf_mayor_supplier, graf_mayor_recipient, graf_arma, graf_pib, graf_arms_gdp
+from function_lib import datos_armas, datos_pib, graf_suppliers, graf_recipients, graf_mayor_supplier, graf_mayor_recipient, graf_arma, graf_pib, graf_arms_gdp, graf_rece_gdp
 
 class App:
     def __init__(self, root):
@@ -31,8 +31,10 @@ class App:
             "Inicio": self.inicio(),
             "Mayores proveedores": self.suppliers(),
             "Mayores receptores": self.recipients(),
-            # "Mayor proveedor":self.mapa(),
-            # "Mayor receptor":self.mapa2(),            
+            "Mayor proveedor vs \nReceptores": self.mayor_supplier(),
+            "Mayor receptor vs \nProveedores": self.mayor_recepient(),
+            "Entrega vs PIB": self.graf_arm_pib(),
+            "Recepción vs PIB": self.graf_recibido_pib(), 
             "Salir": self.salir()
         }
 
@@ -40,7 +42,7 @@ class App:
         for i, texto in enumerate(opciones):
             btn = tb.Button(self.menu_frame, text=texto, bootstyle="secondary", width=20,
                             command=lambda name=texto: self.mostrar_frame(name))
-            btn.place(x=10, y=60 + i * 60, height=40)
+            btn.place(x=10, y=60 + i * 60, height=50)
 
         self.mostrar_frame("Inicio")
         apply_theme_to_titlebar(self.root)
@@ -76,12 +78,12 @@ class App:
         fuente_descripcion = ("Arial", 14)
 
         frame = tk.Frame(self.container, bg="white")
-        label = tk.Label(frame, text="🏠 Bienvenido al Inicio", font=("Arial", 24), justify="center")
+        label = tk.Label(frame, text="🏠 Bienvenido", font=("Arial", 24), justify="center")
         label.pack(pady=20)
 
         nombres = tk.Label(
             frame,
-            text="Juan Diego Suárez Agualimpia \nDaniel Hurtado",
+            text="Creado por: \nJuan Diego Suárez Agualimpia \nDaniel Hurtado",
             font=fuente_texto,justify="center"
         )
         nombres.pack(pady=10)
@@ -194,11 +196,262 @@ class App:
 
         return frame
 
+    def mayor_supplier(self):
 
+        path=r'Datos'
+
+        frame2=datos_armas(path)
+
+        fuente_titulo = ("Arial", 20, "bold")
+        fuente_texto = ("Arial", 16, "bold")
+        fuente_descripcion = ("Arial", 14)
+
+        frame = tk.Frame(self.container, bg="white")
+        label = tk.Label(frame, text="Análisis de mayor proveedor de armas y sus mayores receptores", font=("Arial", 24))
+        label.pack(pady=20)
+  
+        titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico del proveedor de armas más importante y sus mayores receptores.",
+                        font=fuente_descripcion, wraplength=700, justify="center")
+        titulo.pack(pady=10)
+
+        frame_grafico = tk.Frame(frame)
+        frame_grafico.pack(pady=20, fill="both", expand=True)
+        
+        frame_botones = tk.Frame(frame)
+        frame_botones.pack(pady=10)
+
+        botones = [
+            ("Mostrar gráfico"),]
+
+        def manejar_evento2(evento):
+            if evento == "Mostrar gráfico":
+                graf_mayor_supplier(frame2, frame_grafico)             
+
+        for texto in botones:
+            boton = tk.Button(
+                frame_botones,
+                text=texto,
+                width=20,
+                command=lambda t=texto: manejar_evento2(t),
+            )
+            boton.pack(side="left", padx=5)
+
+        return frame
+
+    def mayor_recepient(self):
+
+        path=r'Datos'
+
+        frame2=datos_armas(path)
+
+        fuente_titulo = ("Arial", 20, "bold")
+        fuente_texto = ("Arial", 16, "bold")
+        fuente_descripcion = ("Arial", 14)
+
+        frame = tk.Frame(self.container, bg="white")
+        label = tk.Label(frame, text="Análisis de mayor receptor de armas y sus proveedores", font=("Arial", 24))
+        label.pack(pady=20)
+  
+        titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico del receptor de armas más importante y sus proveedores.",
+                        font=fuente_descripcion, wraplength=700, justify="center")
+        titulo.pack(pady=10)
+
+        frame_grafico = tk.Frame(frame)
+        frame_grafico.pack(pady=20, fill="both", expand=True)
+        
+        frame_botones = tk.Frame(frame)
+        frame_botones.pack(pady=10)
+
+        botones = [
+            ("Mostrar gráfico"),]
+
+        def manejar_evento2(evento):
+            if evento == "Mostrar gráfico":
+                graf_mayor_recipient(frame2, frame_grafico)             
+
+        for texto in botones:
+            boton = tk.Button(
+                frame_botones,
+                text=texto,
+                width=20,
+                command=lambda t=texto: manejar_evento2(t),
+            )
+            boton.pack(side="left", padx=5)
+
+        return frame
+
+    def tipo_armas(self):
+
+        path=r'Datos'
+
+        frame2=datos_armas(path)
+
+        fuente_titulo = ("Arial", 20, "bold")
+        fuente_texto = ("Arial", 16, "bold")
+        fuente_descripcion = ("Arial", 14)
+
+        frame = tk.Frame(self.container, bg="white")
+        label = tk.Label(frame, text="Análisis de armas intercambiadas", font=("Arial", 24))
+        label.pack(pady=20)
+  
+        titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico de los tipos de armas con un mayor número de intercambios a nivel mundial, en función de la cantidad.",
+                        font=fuente_descripcion, wraplength=700, justify="center")
+        titulo.pack(pady=10)
+
+        frame_grafico = tk.Frame(frame)
+        frame_grafico.pack(pady=20, fill="both", expand=True)
+        
+        frame_botones = tk.Frame(frame)
+        frame_botones.pack(pady=10)
+
+        botones = [
+            ("Mostrar gráfico"),]
+
+        def manejar_evento2(evento):
+            if evento == "Mostrar gráfico":
+                graf_arma(frame2, frame_grafico)             
+
+        for texto in botones:
+            boton = tk.Button(
+                frame_botones,
+                text=texto,
+                width=20,
+                command=lambda t=texto: manejar_evento2(t),
+            )
+            boton.pack(side="left", padx=5)
+
+        return frame
+
+
+    def graf_arm_pib(self):
+
+        path = r'Datos'
+        path2 = r'PIB'
+        frame2 = datos_armas(path)
+        pib = datos_pib(path2)
+
+        country_arms = [
+            "Estados Unidos",
+            "Reino Unido",
+            "Francia",
+            "Alemania",
+            "Rusia",
+            "China",
+            "India",
+        ]
+
+        fuente_titulo = ("Arial", 20, "bold")
+        fuente_texto = ("Arial", 16, "bold")
+        fuente_descripcion = ("Arial", 14)
+
+        frame = tk.Frame(self.container, bg="white")
+        label = tk.Label(frame, text="Análisis de proveedores de armas y su impacto en el PIB", font=("Arial", 24))
+        label.pack(pady=20)
+ 
+        titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico de los proveedores de armas más importantes, además, se puede observar su impacto en el PIB.",
+                        font=fuente_descripcion, wraplength=700, justify="center")
+        titulo.pack(pady=10)
+
+        combobox = ttk.Combobox(frame, values=country_arms, state="readonly", font=fuente_texto)
+        combobox.pack(pady=10)
+
+        frame_grafico = tk.Frame(frame)
+        frame_grafico.pack(pady=20, fill="both", expand=True)
+        
+        frame_botones = tk.Frame(frame)
+        frame_botones.pack(pady=10)
+
+        botones = [
+            ("Mostrar gráfico"),]
+            # ("Mostrar datos")]
+
+        def manejar_evento2(evento):
+            if evento == "Mostrar gráfico":
+                selected_country = combobox.get()
+                if selected_country in country_arms:
+                    graf_arms_gdp(frame2, pib, selected_country, frame_grafico)             
+                else:
+                    print("País no válido")
+            # elif evento == "Mostrar datos":
+            #     mostrar_dataframe(frame2, frame_grafico)
+
+        for texto in botones:
+            boton = tk.Button(
+                frame_botones,
+                text=texto,
+                width=20,
+                command=lambda t=texto: manejar_evento2(t),
+            )
+            boton.pack(side="left", padx=5)
+
+        return frame
+
+    def graf_recibido_pib(self):
+
+        path = r'Datos'
+        path2 = r'PIB'
+        frame2 = datos_armas(path)
+        pib = datos_pib(path2)
+
+        country_arms = [
+            "Estados Unidos",
+            "Reino Unido",
+            "Francia",
+            "Alemania",
+            "Rusia",
+            "China",
+            "India",
+        ]
+
+        fuente_titulo = ("Arial", 20, "bold")
+        fuente_texto = ("Arial", 16, "bold")
+        fuente_descripcion = ("Arial", 14)
+
+        frame = tk.Frame(self.container, bg="white")
+        label = tk.Label(frame, text="Análisis de receptores de armas y su impacto en el PIB", font=("Arial", 24))
+        label.pack(pady=20)
+ 
+        titulo = tk.Label(frame, text="En esta ventana puede revisar el gráfico de los receptores de armas más importantes, además, se puede observar su impacto en el PIB.",
+                        font=fuente_descripcion, wraplength=700, justify="center")
+        titulo.pack(pady=10)
+
+        combobox = ttk.Combobox(frame, values=country_arms, state="readonly", font=fuente_texto)
+        combobox.pack(pady=10)
+
+        frame_grafico = tk.Frame(frame)
+        frame_grafico.pack(pady=20, fill="both", expand=True)
+        
+        frame_botones = tk.Frame(frame)
+        frame_botones.pack(pady=10)
+
+        botones = [
+            ("Mostrar gráfico"),]
+            # ("Mostrar datos")]
+
+        def manejar_evento2(evento):
+            if evento == "Mostrar gráfico":
+                selected_country = combobox.get()
+                if selected_country in country_arms:
+                    graf_rece_gdp(frame2, pib, selected_country, frame_grafico)             
+                else:
+                    print("País no válido")
+            # elif evento == "Mostrar datos":
+            #     mostrar_dataframe(frame2, frame_grafico)
+
+        for texto in botones:
+            boton = tk.Button(
+                frame_botones,
+                text=texto,
+                width=20,
+                command=lambda t=texto: manejar_evento2(t),
+            )
+            boton.pack(side="left", padx=5)
+
+        return frame
 
     def salir(self):
         frame = tk.Frame(self.container, bg="white")
-        label = tk.Label(frame, text="🚪 ¿Deseas salir?", font=("Arial", 24))
+        label = tk.Label(frame, text="🚪 ¿Deseas salir? \nEsperamos que hayas disfrutado del análisis.", font=("Arial", 24))
         label.pack(pady=20)
         btn_salir = tk.Button(frame, text="Cerrar aplicación", command=self.root.destroy)
         btn_salir.pack(pady=10)
