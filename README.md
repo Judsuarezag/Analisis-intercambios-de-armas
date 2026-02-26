@@ -22,6 +22,7 @@ pip install matplotlib
 pip install tkintermapview
 pip install ttkbootstrap
 pip install sv-ttk
+pip install streamlit
 ```
 
 ## Resumen
