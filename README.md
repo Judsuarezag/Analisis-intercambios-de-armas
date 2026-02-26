@@ -14,11 +14,18 @@ Luego de instalar la última versión de Python, debe instalar las librerías ne
 - En la ventana del símbolo del sistema pega lo siguiente:
 
 ```
+pip install darkdetect
+pip install pywinstyles
 pip install pandas
 pip install numpy
 pip install matplotlib
+pip install tkintermapview
+pip install ttkbootstrap
+pip install sv-ttk
 ```
 
 ## Resumen
 
-Este programa realiza análisis de datos de las bases de datos de la ONU sobre intercambio de armas a nivel mundial, determinando los suministradores y receptores de armas más prominentes, y los países con los que hacen más transacciones de esta índole
+Este programa realiza análisis de datos de las bases de datos de la ONU sobre intercambio de armas a nivel mundial, determinando los suministradores y receptores de armas más prominentes, y los países con los que hacen más transacciones de esta índole, los mayores tipos de armas intercambiados, además, realiza el cruce de la base de datos de armas con la base de datos del crecimiento del PIB de los países a lo largo del tiempo.
+
+Adicionalmente, se cuenta con dos versiones del programa, una que muestra los resultados a través de la librería Streamlit y otro a través de una interfaz de usuario cuidadosamente diseñada.
