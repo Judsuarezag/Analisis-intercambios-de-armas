@@ -235,9 +235,9 @@ def graf_rece_gdp(armas, pib, country):
     ax1.tick_params(axis='y', labelcolor='b')
     
     ax2 = ax1.twinx()
-    ax2.plot(arms_by_year.index, arms_by_year.values, 'r-', label='Armas entregadas')
-    ax2.set_ylabel('Número de armas entregadas', color='r')
+    ax2.plot(arms_by_year.index, arms_by_year.values, 'r-', label='Armas ordenadas')
+    ax2.set_ylabel('Número de armas ordenadas', color='r')
     ax2.tick_params(axis='y', labelcolor='r')
     
-    plt.title(f'PIB y Distribución de Armas de {country} (1960-2024)')
+    plt.title(f'PIB y Recepción de Armas de {country} (1960-2024)')
     plt.grid(True)
