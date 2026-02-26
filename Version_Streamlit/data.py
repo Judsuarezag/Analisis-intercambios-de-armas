@@ -155,6 +155,12 @@ def graf_arms_gdp(arms_df, pib_df, country):
 
     country_arms = {
         "Estados Unidos": "United States",
+        "Reino Unido": "United Kingdom",
+        "Francia": "France",
+        "Alemania": "Germany",
+        "Rusia": "Russia",
+        "China": "China",
+        "India": "India",
     }.get(country, country)
     
 

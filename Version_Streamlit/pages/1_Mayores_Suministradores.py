@@ -10,6 +10,8 @@ path = '../Datos'
 path2 = '../PIB'
 armas = datos_armas(path)
 
-st.title("Top 20 Suministradores de Armas")
+st.title("Mayores Suministradores de Armas")
+st.header("Top 20 Suministradores de Armas")
+st.text("Este gráfico muestra los 20 principales suministradores de armas en el período analizado, ordenados por la cantidad total de armas entregadas.")
 graf_suppliers(armas)
 st.pyplot(plt)
