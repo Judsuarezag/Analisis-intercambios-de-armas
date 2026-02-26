@@ -151,7 +151,7 @@ def graf_pib(armas, pib, country):
     plt.ylabel("PIB (US$)")
     # plt.show()
 
-def graf_arms_gdp(arms_df, pib_df, country):
+def graf_arms_gdp(armas, pib, country):
 
     country_arms = {
         "Estados Unidos": "United States",
@@ -164,18 +164,18 @@ def graf_arms_gdp(arms_df, pib_df, country):
     }.get(country, country)
     
 
-    arms_filtered = arms_df[(arms_df['Supplier'] == country_arms) & arms_df['Number delivered'].notna()]
+    arms_filtered = armas[(armas['Supplier'] == country_arms) & armas['Number delivered'].notna()]
     
     arms_by_year = arms_filtered.groupby('Year of order')['Number delivered'].sum()
 
     arms_by_year = arms_by_year[arms_by_year.index >= 1960]
 
-    pib_row = pib_df[pib_df['Country Name'] == country]
+    pib_row = pib[pib['Country Name'] == country]
     if pib_row.empty:
         print(f"No GDP data for {country}")
         return
 
-    year_cols = [col for col in pib_df.columns if col.isdigit() and 1960 <= int(col) <= 2024]
+    year_cols = [col for col in pib.columns if col.isdigit() and 1960 <= int(col) <= 2024]
     years = [int(col) for col in year_cols]
     gdp_values = pib_row[year_cols].values.flatten()
     gdp_values = pd.to_numeric(gdp_values, errors='coerce')
@@ -197,3 +197,47 @@ def graf_arms_gdp(arms_df, pib_df, country):
     # plt.show()
 
 # graf_arms_gdp(armas, pib, "Estados Unidos")
+
+def graf_rece_gdp(armas, pib, country):
+
+    country_arms = {
+        "Estados Unidos": "United States",
+        "Reino Unido": "United Kingdom",
+        "Francia": "France",
+        "Alemania": "Germany",
+        "Rusia": "Russia",
+        "China": "China",
+        "India": "India",
+    }.get(country, country)
+    
+
+    arms_filtered = armas[(armas['Recipient'] == country_arms) & armas['Number ordered'].notna()]
+    
+    arms_by_year = arms_filtered.groupby('Year of order')['Number ordered'].sum()
+
+    arms_by_year = arms_by_year[arms_by_year.index >= 1960]
+
+    pib_row = pib[pib['Country Name'] == country]
+    if pib_row.empty:
+        print(f"No GDP data for {country}")
+        return
+
+    year_cols = [col for col in pib.columns if col.isdigit() and 1960 <= int(col) <= 2024]
+    years = [int(col) for col in year_cols]
+    gdp_values = pib_row[year_cols].values.flatten()
+    gdp_values = pd.to_numeric(gdp_values, errors='coerce')
+
+    fig, ax1 = plt.subplots(figsize=(12,6))
+
+    ax1.plot(years, gdp_values, 'b-', label='PIB')
+    ax1.set_xlabel('Año')
+    ax1.set_ylabel('PIB (US$ a precios actuales)', color='b')
+    ax1.tick_params(axis='y', labelcolor='b')
+    
+    ax2 = ax1.twinx()
+    ax2.plot(arms_by_year.index, arms_by_year.values, 'r-', label='Armas entregadas')
+    ax2.set_ylabel('Número de armas entregadas', color='r')
+    ax2.tick_params(axis='y', labelcolor='r')
+    
+    plt.title(f'PIB y Distribución de Armas de {country} (1960-2024)')
+    plt.grid(True)
