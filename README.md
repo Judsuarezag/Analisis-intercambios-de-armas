@@ -37,7 +37,7 @@ Este proyecto analiza las bases de datos de la ONU sobre intercambios de armas a
 - **Datos Procesados:** Los datos se limpian y agrupan por países, años y tipos de armas, eliminando valores nulos y enfocándose en entregas/órdenes de armas.
 El objetivo es comprender dinámicas globales del comercio de armas, actores clave y su vínculo con el crecimiento económico.
 
-Capacidades del Proyecto
+## Capacidades del Proyecto
 
 El proyecto cuenta con dos versiones para ejecutar los análisis, permitiendo flexibilidad en el acceso a los resultados.
 
