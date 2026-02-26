@@ -31,12 +31,10 @@ class App:
             "Inicio": self.inicio(),
             "Mayores proveedores": self.suppliers(),
             "Mayores receptores": self.recipients(),
-            "Mayor proveedor y sus mayores receptores": self.mayor_supplier(),
-            "Mayor receptor y sus mayores proveedores": self.mayor_recepient(),
+            "Mayor proveedor vs Receptores": self.mayor_supplier(),
+            "Mayor receptor vs Proveedores": self.mayor_recepient(),
             "Entrega vs PIB": self.graf_arm_pib(),
-            "Recepción vs PIB": self.graf_recibido_pib(),
-            # "Mayor proveedor":self.mapa(),
-            # "Mayor receptor":self.mapa2(),    
+            "Recepción vs PIB": self.graf_recibido_pib(), 
             "Salir": self.salir()
         }
 
@@ -453,7 +451,7 @@ class App:
 
     def salir(self):
         frame = tk.Frame(self.container, bg="white")
-        label = tk.Label(frame, text="🚪 ¿Deseas salir?", font=("Arial", 24))
+        label = tk.Label(frame, text="🚪 ¿Deseas salir? \nEsperamos que hayas disfrutado del análisis.", font=("Arial", 24))
         label.pack(pady=20)
         btn_salir = tk.Button(frame, text="Cerrar aplicación", command=self.root.destroy)
         btn_salir.pack(pady=10)
