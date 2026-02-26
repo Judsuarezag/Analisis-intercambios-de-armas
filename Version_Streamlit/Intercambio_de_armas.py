@@ -38,8 +38,8 @@ pib = datos_pib(path2)
 # graf_pib(armas, pib, country)
 # st.pyplot(plt)
 
-st.header("PIB y Distribución de Armas")
-country_options = ["Estados Unidos"]
-selected_country = st.selectbox("Selecciona un país", country_options, key="arms_gdp_country")
-graf_arms_gdp(armas, pib, selected_country)
-st.pyplot(plt)
+# st.header("PIB y Distribución de Armas")
+# country_options = ["Estados Unidos"]
+# selected_country = st.selectbox("Selecciona un país", country_options, key="arms_gdp_country")
+# graf_arms_gdp(armas, pib, selected_country)
+# st.pyplot(plt)
