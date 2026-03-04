@@ -13,9 +13,9 @@ path2 = '../PIB'
 armas = datos_armas(path)
 pib = datos_pib(path2)
 
-armas_por_tipo = armas.groupby('Weapon description')['Number ordered'].sum().sort_values(ascending=False).head(20)
+armas_por_tipo = armas.groupby('Weapon description')['Number ordered'].sum().sort_values(ascending=False)
 
-weapons_totals = armas.groupby('Weapon designation')['Number ordered'].sum().sort_values(ascending=False).head(20)
+weapons_totals = armas.groupby('Weapon designation')['Number ordered'].sum().sort_values(ascending=False)
 
 
 st.title("Información Detallada sobre Intercambio de Armas y PIB")
@@ -31,9 +31,9 @@ st.dataframe(weapons_totals)
 
 st.header("Datos de PIB por País")
 
-st.dataframe(pib.head(20))
+st.dataframe(pib)
 
 
 st.header("Datos detallados de Intercambio de Armas")
 
-st.dataframe(armas.head(20))
+st.dataframe(armas)
