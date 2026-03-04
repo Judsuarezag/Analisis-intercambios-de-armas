@@ -29,6 +29,7 @@ class App:
 
         self.frames = {
             "Inicio": self.inicio(),
+            "Tipo de armas": self.tipo_armas(),
             "Mayores proveedores": self.suppliers(),
             "Mayores receptores": self.recipients(),
             "Mayor proveedor vs \nReceptores": self.mayor_supplier(),
