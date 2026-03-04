@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import glob
 import os
 
+st.set_page_config(page_title="Análisis de Intercambios de Armas", page_icon=":pistol:", layout="wide")
+
 st.title("Conclusiones del Análisis de Intercambios de Armas")
 st.header("Conclusiones")
 st.text("Se puede concluir que los intercambios de armas a lo largo del tiempo han estado dominados por un grupo reducido de países, con Estados Unidos, Rusia, Francia y Alemania como los principales actores. Los tipos de armas más comunes incluyen misiles anti-tanque, misiles superficie-aire y vehículos blindados. Además, se observa una correlación entre el crecimiento económico (PIB) y la recepción de armas, aunque esta relación varía según el país y el contexto geopolítico. Estos hallazgos sugieren que el comercio de armas está influenciado tanto por factores económicos como por consideraciones estratégicas y políticas.")

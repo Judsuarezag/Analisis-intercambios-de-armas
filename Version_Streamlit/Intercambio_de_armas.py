@@ -6,7 +6,9 @@ import glob
 import os
 from data import datos_armas, datos_pib, graf_suppliers, graf_recipients, graf_mayor_supplier, graf_mayor_recipient, graf_arma, graf_pib, graf_arms_gdp
 
-st.title("Análisis de bases de datos sobre Intercambios de Armas")
+st.set_page_config(page_title="Análisis de Intercambios de Armas", page_icon=":pistol:", layout="wide")
+
+st.title("Análisis de bases de datos sobre Intercambios de Armas", text_alignment="center")
 st.header("Introducción")
 st.text("Este proyecto analiza las bases de datos de la ONU sobre los intercambios de armas a lo largo del tiempo, determinando los principales países involucrados, los tipos de armas más comunes, y la relación entre el crecimiento económico (PIB) y la distribución de armas. A través de visualizaciones interactivas, se busca comprender mejor las dinámicas globales de comercio de armas y su impacto en la economía mundial.")
 st.image("armas.jpg", width="stretch")
