@@ -6,7 +6,7 @@ import glob
 import os
 from data import datos_armas, datos_pib, graf_suppliers, graf_recipients, graf_mayor_supplier, graf_mayor_recipient, graf_arma, graf_pib, graf_arms_gdp
 
-st.set_page_config(page_title="Análisis de Intercambios de Armas", page_icon=":pistol:", layout="wide")
+st.set_page_config(page_title="Análisis de Intercambios de Armas", page_icon=":airplane:", layout="wide")
 
 st.title("Análisis de bases de datos sobre Intercambios de Armas", text_alignment="center")
 st.header("Introducción")
