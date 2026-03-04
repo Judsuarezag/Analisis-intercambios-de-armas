@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import glob
 import os
 
-st.set_page_config(page_title="Análisis de Intercambios de Armas", page_icon=":airplane:", layout="wide")
+st.set_page_config(page_title="Análisis de Intercambios de Armas", page_icon=":material/swords:", layout="wide")
 
 st.title("Conclusiones del Análisis de Intercambios de Armas")
 st.header("Conclusiones")
