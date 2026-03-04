@@ -180,9 +180,9 @@ def graf_arma(armas, frame_grafico):
     for widget in frame_grafico.winfo_children():
         widget.destroy()
 
-    frame2 = armas.dropna(subset=['Number delivered'])
+    # frame2 = armas.dropna(subset=['Number delivered'])
 
-    weapons_totals = frame2.groupby('Weapon designation')['Number delivered'].sum().sort_values(ascending=False).head(20)
+    weapons_totals = armas.groupby('Weapon designation')['Number delivered'].sum().sort_values(ascending=False).head(20)
     fig = plt.figure(figsize=(10,5))
     plt.bar(weapons_totals.index, weapons_totals.values, color="green")
     plt.xticks(rotation=60)
