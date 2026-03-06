@@ -7,28 +7,45 @@ from pathlib import Path
 import streamlit as st
 
 
-@st.cache_data
+# @st.cache_data
+# def datos_armas(path):
+    
+#     base_dir = Path(__file__).parent.parent
+#     full_path = Path(base_dir) / path if not os.path.isabs(path) else Path(path)
+    
+#     all_files = glob.glob(os.path.join(str(full_path), "*.csv"))
+    
+#     if not all_files:
+#         raise FileNotFoundError(f"No CSV files found in {full_path}")
+    
+#     data = []
+#     for filename in all_files:
+#         df = pd.read_csv(filename, index_col=None, header=0)
+#         data.append(df)
+    
+#     if not data:
+#         raise ValueError("No data loaded from CSV files")
+    
+#     frame = pd.concat(data, axis=0, ignore_index=True)
+#     frame2 = frame.drop(['a', 'b', 'c'], axis=1, errors='ignore')
+    
+#     return(frame2)
+
 def datos_armas(path):
-    
-    base_dir = Path(__file__).parent.parent
-    full_path = Path(base_dir) / path if not os.path.isabs(path) else Path(path)
-    
-    all_files = glob.glob(os.path.join(str(full_path), "*.csv"))
-    
-    if not all_files:
-        raise FileNotFoundError(f"No CSV files found in {full_path}")
-    
-    data = []
-    for filename in all_files:
-        df = pd.read_csv(filename, index_col=None, header=0)
-        data.append(df)
-    
-    if not data:
-        raise ValueError("No data loaded from CSV files")
-    
-    frame = pd.concat(data, axis=0, ignore_index=True)
-    frame2 = frame.drop(['a', 'b', 'c'], axis=1, errors='ignore')
-    
+
+    all_files = glob.glob(os.path.join(path + "/*.csv"))
+    frame = pd.read_csv(all_files[0], index_col=None, header=0)
+
+    # data = []
+
+    # for filename in all_files:
+    #     df = pd.read_csv(filename, index_col=None, header=0)
+    #     data.append(df)
+
+    # frame = pd.concat(data, axis=0, ignore_index=True)
+
+    frame2=frame.drop(['a', 'b', 'c'], axis=1)
+
     return(frame2)
 
 
