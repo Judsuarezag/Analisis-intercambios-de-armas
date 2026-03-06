@@ -33,8 +33,9 @@ import streamlit as st
 
 def datos_armas(path):
 
-    all_files = glob.glob(os.path.join(path + "/*.csv"))
-    frame = pd.read_csv(all_files[0], index_col=None, header=0)
+    # all_files = glob.glob(os.path.join(path + "/*.csv"))
+
+    frame = pd.read_csv(path, index_col=None, header=0)
 
     # data = []
 
@@ -48,31 +49,51 @@ def datos_armas(path):
 
     return(frame2)
 
-
-@st.cache_data
 def datos_pib(path2):
+
+    # all_files = glob.glob(os.path.join(path2 + "/*.csv"))
+
+    pib = pd.read_csv(path2, index_col=None, header=0)
     
-    base_dir = Path(__file__).parent.parent
-    full_path = Path(base_dir) / path2 if not os.path.isabs(path2) else Path(path2)
+    # data = []
+
+    # for filename in all_files:
+    #     df = pd.read_csv(filename, index_col=None, header=0)
+    #     data.append(df)
+
+    # pib = pd.concat(data, axis=0, ignore_index=True)
+
+    frame2=pib.drop(['a'], axis=1)
+
+    pib = frame2.dropna(subset=['Country Name'])
+
+    return(pib)
+
+
+# @st.cache_data
+# def datos_pib(path2):
     
-    all_files = glob.glob(os.path.join(str(full_path), "*.csv"))
+#     base_dir = Path(__file__).parent.parent
+#     full_path = Path(base_dir) / path2 if not os.path.isabs(path2) else Path(path2)
     
-    if not all_files:
-        raise FileNotFoundError(f"No CSV files found in {full_path}")
+#     all_files = glob.glob(os.path.join(str(full_path), "*.csv"))
     
-    data = []
-    for filename in all_files:
-        df = pd.read_csv(filename, index_col=None, header=0)
-        data.append(df)
+#     if not all_files:
+#         raise FileNotFoundError(f"No CSV files found in {full_path}")
     
-    if not data:
-        raise ValueError("No data loaded from CSV files")
+#     data = []
+#     for filename in all_files:
+#         df = pd.read_csv(filename, index_col=None, header=0)
+#         data.append(df)
     
-    pib = pd.concat(data, axis=0, ignore_index=True)
-    frame2 = pib.drop(['a'], axis=1, errors='ignore')
-    pib_clean = frame2.dropna(subset=['Country Name'])
+#     if not data:
+#         raise ValueError("No data loaded from CSV files")
     
-    return(pib_clean)
+#     pib = pd.concat(data, axis=0, ignore_index=True)
+#     frame2 = pib.drop(['a'], axis=1, errors='ignore')
+#     pib_clean = frame2.dropna(subset=['Country Name'])
+    
+#     return(pib_clean)
 
 
 def graf_suppliers(armas):
