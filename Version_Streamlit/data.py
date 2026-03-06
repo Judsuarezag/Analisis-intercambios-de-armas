@@ -54,9 +54,9 @@ def datos_pib(path2):
     
     pib = pd.read_csv(path2, index_col=None, header=0)
     frame2 = pib.drop(['a'], axis=1, errors='ignore')
-    pib_clean = frame2.dropna(subset=['Country Name'], errors='ignore')
+    # pib_clean = frame2.dropna(subset=['Country Name'], errors='ignore')
     
-    return(pib_clean)
+    return(frame2)
 
 # @st.cache_data
 # def datos_pib(path2):
