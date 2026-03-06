@@ -1,7 +1,7 @@
 # Análisis-intercambios-de-armas
 Proyecto con el fin de analizar las bases de datos de la ONU sobre intercambios de armas a nivel mundial
 
-## Versión de aplicación web usando Streamlit
+## Versión Web Interactiva (Streamlit)
 
 Mediante el siguiente enlace puede acceder al programa ejecutado a través del servidor de Streamlit.
 
