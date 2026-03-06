@@ -1,6 +1,12 @@
 # Análisis-intercambios-de-armas
 Proyecto con el fin de analizar las bases de datos de la ONU sobre intercambios de armas a nivel mundial
 
+## Versión de aplicación web usando Streamlit
+
+Mediante el siguiente enlace puede acceder al programa ejecutado a través del servidor de Streamlit.
+
+https://intercambio-armas.streamlit.app/
+
 ## Requisitos previos
 
 Para utilizar adecuadamente este programa debe instalar Python, a continuación se muestra en enlace de descarga.
