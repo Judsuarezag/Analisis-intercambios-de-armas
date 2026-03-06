@@ -15,7 +15,7 @@ def datos_armas(path):
         df = pd.read_csv(filename, index_col=None, header=0)
         data.append(df)
 
-    frame = pd.concat(data, axis=0, ignore_index=True)
+    # frame = pd.concat(data, axis=0, ignore_index=True)
 
     frame2=frame.drop(['a', 'b', 'c'], axis=1)
 
@@ -32,7 +32,7 @@ def datos_pib(path2):
         df = pd.read_csv(filename, index_col=None, header=0)
         data.append(df)
 
-    pib = pd.concat(data, axis=0, ignore_index=True)
+    # pib = pd.concat(data, axis=0, ignore_index=True)
 
     frame2=pib.drop(['a'], axis=1)
 
