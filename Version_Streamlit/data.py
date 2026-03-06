@@ -14,10 +14,11 @@ def datos_armas(path):
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0)
         data.append(df)
+        return(df)
 
     # frame = pd.concat(data, axis=0, ignore_index=True)
 
-    frame2=frame.drop(['a', 'b', 'c'], axis=1)
+    frame2=df.drop(['a', 'b', 'c'], axis=1)
 
     return(frame2)
 
@@ -31,10 +32,11 @@ def datos_pib(path2):
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0)
         data.append(df)
+        return(df)
 
     # pib = pd.concat(data, axis=0, ignore_index=True)
 
-    frame2=pib.drop(['a'], axis=1)
+    frame2=df.drop(['a'], axis=1)
 
     pib = frame2.dropna(subset=['Country Name'])
 
