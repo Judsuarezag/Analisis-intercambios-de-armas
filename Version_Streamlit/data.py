@@ -5,7 +5,7 @@ import glob
 import os
 from pathlib import Path
 import streamlit as st
-import darkdetect
+
 
 def datos_armas(path):
 
@@ -56,8 +56,6 @@ def datos_pib(path2):
 
 def tema():
 
-    # tema_actual = darkdetect.theme()
-
     if st.context.theme.type == "dark":
         plt.style.use("dark_background")
     else:
@@ -66,7 +64,7 @@ def tema():
 
 def graf_suppliers(armas):
     
-    tema()
+    # tema()
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
