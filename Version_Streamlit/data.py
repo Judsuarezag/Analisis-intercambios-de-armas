@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import glob
 import os
 from pathlib import Path
+import darkdetect
 
 def datos_armas(path):
 
@@ -52,14 +53,14 @@ def datos_pib(path2):
 # print(all_files[3])
 
 
-# def tema():
-#     # st-theme usa el tema configurado en Streamlit (light/dark)
-#     theme_info = st_theme.get_theme()  # devuelve 'dark' o 'light'
-    
-#     if theme_info and theme_info.lower() == "dark":
-#         plt.style.use("dark_background")
-#     else:
-#         plt.style.use("default")
+def tema():
+
+    tema_actual = darkdetect.theme()
+
+    if tema_actual == "Dark":
+        plt.style.use("dark_background")
+    else:
+        plt.style.use("default")
 
 
 def graf_suppliers(armas):
