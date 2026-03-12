@@ -75,7 +75,7 @@ def graf_suppliers(armas,frame_grafico):
 
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(20)
     
-    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    fig, ax = plt.subplots(figsize=(10,4), facecolor='none')
     ax.set_facecolor('none')
     fig.patch.set_alpha(0.0)
     ax.patch.set_alpha(0.0)
@@ -101,7 +101,7 @@ def graf_recipients(armas,frame_grafico):
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(20)
     
-    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    fig, ax = plt.subplots(figsize=(10,4), facecolor='none')
     ax.set_facecolor('none')
     fig.patch.set_alpha(0.0)
     ax.patch.set_alpha(0.0)
@@ -136,7 +136,7 @@ def graf_mayor_supplier(armas,frame_grafico):
     labels = [top_supplier] + list(recipient_totals.index)
     values = [top_value] + list(recipient_totals.values)
 
-    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    fig, ax = plt.subplots(figsize=(10,4), facecolor='none')
     ax.set_facecolor('none')
     fig.patch.set_alpha(0.0)
     ax.patch.set_alpha(0.0)
@@ -174,7 +174,7 @@ def graf_mayor_recipient(armas,frame_grafico):
     labels = [top_recipient] + list(supplier_totals.index)
     values = [top_value] + list(supplier_totals.values)
 
-    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    fig, ax = plt.subplots(figsize=(10,4), facecolor='none')
     ax.set_facecolor('none')
     fig.patch.set_alpha(0.0)
     ax.patch.set_alpha(0.0)
@@ -202,7 +202,7 @@ def graf_arma(armas, frame_grafico):
 
     weapons_totals = armas.groupby('Weapon designation')['Number delivered'].sum().sort_values(ascending=False).head(20)
 
-    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    fig, ax = plt.subplots(figsize=(10,4), facecolor='none')
     ax.set_facecolor('none')
     fig.patch.set_alpha(0.0)
     ax.patch.set_alpha(0.0)
@@ -233,7 +233,7 @@ def graf_pib(armas, pib, country, frame_grafico):
     values = row[year_cols].values.flatten()
     values = pd.to_numeric(values, errors='coerce')
 
-    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    fig, ax = plt.subplots(figsize=(10,4), facecolor='none')
     ax.set_facecolor('none')
     fig.patch.set_alpha(0.0)
     ax.patch.set_alpha(0.0)
@@ -282,15 +282,15 @@ def graf_arms_gdp(arms_df, pib_df, country, frame_grafico):
     gdp_values = pib_row[year_cols].values.flatten()
     gdp_values = pd.to_numeric(gdp_values, errors='coerce')
 
-    fig, ax1 = plt.subplots(figsize=(12,6), facecolor='none')
+    fig, ax1 = plt.subplots(figsize=(12,4), facecolor='none')
     ax1.set_facecolor('none')
     fig.patch.set_alpha(0.0)
     ax1.patch.set_alpha(0.0)
 
-    ax1.plot(years, gdp_values, 'b-', label='PIB')
+    ax1.plot(years, gdp_values, 'g-', label='PIB')
     ax1.set_xlabel('Año')
-    ax1.set_ylabel('PIB (US$ a precios actuales)', color='b')
-    ax1.tick_params(axis='y', labelcolor='b')
+    ax1.set_ylabel('PIB (US$ a precios actuales)', color='g')
+    ax1.tick_params(axis='y', labelcolor='g')
     
     ax2 = ax1.twinx()
     ax2.plot(arms_by_year.index, arms_by_year.values, 'r-', label='Armas entregadas')
@@ -340,15 +340,15 @@ def graf_rece_gdp(armas, pib, country, frame_grafico):
     gdp_values = pib_row[year_cols].values.flatten()
     gdp_values = pd.to_numeric(gdp_values, errors='coerce')
 
-    fig, ax1 = plt.subplots(figsize=(12,6), facecolor='none')
+    fig, ax1 = plt.subplots(figsize=(12,4), facecolor='none')
     ax1.set_facecolor('none')
     fig.patch.set_alpha(0.0)
     ax1.patch.set_alpha(0.0)
 
-    ax1.plot(years, gdp_values, 'b-', label='PIB')
+    ax1.plot(years, gdp_values, 'g-', label='PIB')
     ax1.set_xlabel('Año')
-    ax1.set_ylabel('PIB (US$ a precios actuales)', color='b')
-    ax1.tick_params(axis='y', labelcolor='b')
+    ax1.set_ylabel('PIB (US$ a precios actuales)', color='g')
+    ax1.tick_params(axis='y', labelcolor='g')
     
     ax2 = ax1.twinx()
     ax2.plot(arms_by_year.index, arms_by_year.values, 'r-', label='Armas ordenadas')

@@ -228,7 +228,7 @@ def graf_arms_gdp(armas, pib, country):
     fig.patch.set_alpha(0.0)
     ax1.patch.set_alpha(0.0)
 
-    ax1.plot(years, gdp_values, 'b-', label='PIB')
+    ax1.plot(years, gdp_values, 'g-', label='PIB')
     ax1.set_xlabel('Año')
     ax1.set_ylabel('PIB (US$ a precios actuales)', color='g')
     ax1.tick_params(axis='y', labelcolor='g')
@@ -277,7 +277,7 @@ def graf_rece_gdp(armas, pib, country):
     fig.patch.set_alpha(0.0)
     ax1.patch.set_alpha(0.0)
 
-    ax1.plot(years, gdp_values, 'b-', label='PIB')
+    ax1.plot(years, gdp_values, 'g-', label='PIB')
     ax1.set_xlabel('Año')
     ax1.set_ylabel('PIB (US$ a precios actuales)', color='g')
     ax1.tick_params(axis='y', labelcolor='g')
