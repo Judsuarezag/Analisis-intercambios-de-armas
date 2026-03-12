@@ -90,15 +90,21 @@ def graf_suppliers(armas):
     ax.set_xticklabels(supplier_totals.index, rotation=90)
     ax.set_title("Top 20 Suministradores de armas")
 
+
 def graf_recipients(armas):
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(20)
-    plt.figure(figsize=(10,5))
-    plt.bar(recipient_totals.index, recipient_totals.values, color="red")
-    plt.xticks(rotation=90)
-    plt.title("Top 20 Receptores de armas")
+
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
+    ax.bar(recipient_totals.index, recipient_totals.values, color="red")
+    ax.set_xticklabels(recipient_totals.index, rotation=90)
+    ax.set_title("Top 20 Receptores de armas")
 
 
 def graf_mayor_supplier(armas):
