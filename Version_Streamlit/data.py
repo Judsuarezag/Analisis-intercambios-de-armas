@@ -92,7 +92,7 @@ def graf_suppliers(armas):
 
 
 def graf_recipients(armas):
-
+    tema()
     frame2 = armas.dropna(subset=['Number delivered'])
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(20)
@@ -108,7 +108,7 @@ def graf_recipients(armas):
 
 
 def graf_mayor_supplier(armas):
-
+    tema()
     frame2 = armas.dropna(subset=['Number delivered'])
 
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False)
@@ -134,7 +134,7 @@ def graf_mayor_supplier(armas):
 
 
 def graf_mayor_recipient(armas):
-
+    tema()
     frame2 = armas.dropna(subset=['Number delivered'])
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False)
@@ -160,7 +160,7 @@ def graf_mayor_recipient(armas):
 
 
 def graf_arma(armas):
-
+    tema()
     weapons_totals = armas.groupby('Weapon designation')['Number ordered'].sum().sort_values(ascending=False).head(20)
     fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
     ax.set_facecolor('none')
@@ -172,7 +172,7 @@ def graf_arma(armas):
 
 
 def graf_pib(armas, pib, country):
-
+    tema()
     row = pib[pib['Country Name'] == country]
     if row.empty:
         print(f"No data for {country}")
@@ -194,7 +194,7 @@ def graf_pib(armas, pib, country):
 
 
 def graf_arms_gdp(armas, pib, country):
-
+    tema()
     country_arms = {
         "Estados Unidos": "United States",
         "Reino Unido": "United Kingdom",
@@ -243,7 +243,7 @@ def graf_arms_gdp(armas, pib, country):
 
 
 def graf_rece_gdp(armas, pib, country):
-
+    tema()
     country_arms = {
         "Estados Unidos": "United States",
         "Reino Unido": "United Kingdom",
