@@ -54,19 +54,19 @@ def datos_pib(path2):
 # print(all_files[3])
 
 
-def tema():
+# def tema():
 
-    tema_actual = darkdetect.theme()
+#     tema_actual = darkdetect.theme()
 
-    if tema_actual == "Dark":
-        plt.style.use("dark_background")
-    else:
-        plt.style.use("default")
+#     if tema_actual == "Dark":
+#         plt.style.use("dark_background")
+#     else:
+#         plt.style.use("default")
 
 
 def graf_suppliers(armas):
 
-    tema()
+    # tema()
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
