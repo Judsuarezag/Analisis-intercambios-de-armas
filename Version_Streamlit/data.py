@@ -60,21 +60,7 @@ def tema():
         plt.style.use("dark_background")
     else:
         plt.style.use("default")
-
-
-# def graf_suppliers(armas):
-    
-#     tema()
-
-#     frame2 = armas.dropna(subset=['Number delivered'])
-
-#     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(20)
-    
-#     plt.figure(figsize=(10,5))
-#     plt.bar(supplier_totals.index, supplier_totals.values, color="blue")
-#     plt.xticks(rotation=90)
-#     plt.title("Top 20 Suministradores de armas")
-
+        
 
 def graf_suppliers(armas):
     tema()
