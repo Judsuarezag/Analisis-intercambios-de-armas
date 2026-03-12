@@ -87,7 +87,7 @@ def graf_suppliers(armas):
     ax.patch.set_alpha(0.0)
 
     ax.bar(supplier_totals.index, supplier_totals.values, color="blue")
-    ax.set_xticklabels(supplier_totals.index, rotation=90)
+    ax.set_xticklabels(supplier_totals.index, rotation=35)
     ax.set_title("Top 20 Suministradores de armas")
 
 
@@ -103,7 +103,7 @@ def graf_recipients(armas):
     ax.patch.set_alpha(0.0)
 
     ax.bar(recipient_totals.index, recipient_totals.values, color="red")
-    ax.set_xticklabels(recipient_totals.index, rotation=90)
+    ax.set_xticklabels(recipient_totals.index, rotation=35)
     ax.set_title("Top 20 Receptores de armas")
 
 
@@ -128,7 +128,7 @@ def graf_mayor_supplier(armas):
     ax.patch.set_alpha(0.0)
 
     ax.bar(labels, values, color=['blue', 'red', 'green', 'orange', 'purple'])
-    ax.set_xticklabels(labels, rotation=45)
+    ax.set_xticklabels(labels, rotation=35)
     ax.set_title(f"Mayor Suministrador: {top_supplier} y sus Top 5 Receptores")
     ax.set_ylabel("Número de Armas Entregadas")
 
@@ -154,7 +154,7 @@ def graf_mayor_recipient(armas):
     ax.patch.set_alpha(0.0)
     colors = ['blue', 'red', 'green', 'orange', 'purple']
     ax.bar(labels, values, color=colors[:len(labels)])
-    ax.set_xticklabels(labels, rotation=45)
+    ax.set_xticklabels(labels, rotation=35)
     ax.set_title(f"Mayor Receptor: {top_recipient} y sus Top 5 Suministradores")
     ax.set_ylabel("Número de Armas Entregadas")
 
