@@ -4,9 +4,6 @@ import matplotlib.pyplot as plt
 import glob
 import os
 from pathlib import Path
-import darkdetect
-import streamlit as st
-import st_theme
 
 def datos_armas(path):
 
@@ -55,19 +52,19 @@ def datos_pib(path2):
 # print(all_files[3])
 
 
-def tema():
-    # st-theme usa el tema configurado en Streamlit (light/dark)
-    theme_info = st_theme.get_theme()  # devuelve 'dark' o 'light'
+# def tema():
+#     # st-theme usa el tema configurado en Streamlit (light/dark)
+#     theme_info = st_theme.get_theme()  # devuelve 'dark' o 'light'
     
-    if theme_info and theme_info.lower() == "dark":
-        plt.style.use("dark_background")
-    else:
-        plt.style.use("default")
+#     if theme_info and theme_info.lower() == "dark":
+#         plt.style.use("dark_background")
+#     else:
+#         plt.style.use("default")
 
 
 def graf_suppliers(armas):
     
-    tema()
+    # tema()
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
@@ -81,7 +78,7 @@ def graf_suppliers(armas):
 
 def graf_recipients(armas):
 
-    tema()
+    # tema()
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
@@ -94,7 +91,7 @@ def graf_recipients(armas):
 
 def graf_mayor_supplier(armas):
 
-    tema()
+    # tema()
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
@@ -118,7 +115,7 @@ def graf_mayor_supplier(armas):
 
 def graf_mayor_recipient(armas):
 
-    tema()
+    # tema()
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
@@ -143,7 +140,7 @@ def graf_mayor_recipient(armas):
 
 def graf_arma(armas):
 
-    tema()
+    # tema()
 
     # frame2 = armas.dropna(subset=['Number ordered'])
 
@@ -156,7 +153,7 @@ def graf_arma(armas):
 
 def graf_pib(armas, pib, country):
 
-    tema()
+    # tema()
 
     row = pib[pib['Country Name'] == country]
     if row.empty:
@@ -175,7 +172,7 @@ def graf_pib(armas, pib, country):
 
 def graf_arms_gdp(armas, pib, country):
 
-    tema()
+    # tema()
 
     country_arms = {
         "Estados Unidos": "United States",
@@ -222,7 +219,7 @@ def graf_arms_gdp(armas, pib, country):
 
 def graf_rece_gdp(armas, pib, country):
 
-    tema()
+    # tema()
 
     country_arms = {
         "Estados Unidos": "United States",
