@@ -33,6 +33,24 @@ def datos_pib(path2):
     
     return(frame2)
 
+# def datos_pages(path2):
+
+#     if os.path.isdir(path2):
+#         all_files = glob.glob(os.path.join(path2, "*.py"))
+#         if not all_files:
+#             raise FileNotFoundError(f"No Python files found in directory: {path2}")
+#         path2 = all_files[0]
+        
+#     return(all_files)
+
+# path = r'Version_Streamlit/pages'
+
+# all_files=datos_pages(path)
+
+# print(all_files[0])
+# print(all_files[1])
+# print(all_files[2])
+# print(all_files[3])
 
 def graf_suppliers(armas):
 
