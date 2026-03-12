@@ -74,7 +74,7 @@ def graf_suppliers(armas):
 
     ax.bar(supplier_totals.index, supplier_totals.values, color="blue")
     ax.set_xticklabels(supplier_totals.index, rotation=35)
-    ax.set_title("Top 20 Suministradores")
+    ax.set_title("Top 20 Suministradores de armas")
 
 
 def graf_recipients(armas):
