@@ -8,8 +8,8 @@ from data import datos_armas, datos_pib, graf_suppliers, graf_recipients, graf_m
 
 st.set_page_config(page_title="Análisis de Intercambios de Armas", page_icon=":material/swords:", layout="wide")
 
-path = r'Datos'
-path2 = r'PIB'
+path = "../Datos"
+path2 = "../PIB"
 armas = datos_armas(path)
 
 st.title("Análisis del Mayor Suministrador de Armas")
