@@ -75,10 +75,14 @@ def graf_suppliers(armas,frame_grafico):
 
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(20)
     
-    fig = plt.figure(figsize=(10,5))
-    plt.bar(supplier_totals.index, supplier_totals.values, color="blue")
-    plt.xticks(rotation=45)
-    plt.title("Top 20 Suministradores de armas")
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
+    ax.bar(supplier_totals.index, supplier_totals.values, color="blue")
+    ax.set_xticklabels(supplier_totals.index, rotation=45)
+    ax.set_title("Top 20 Suministradores de armas")
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
@@ -96,10 +100,15 @@ def graf_recipients(armas,frame_grafico):
     frame2 = armas.dropna(subset=['Number delivered'])
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(20)
-    fig= plt.figure(figsize=(10,5))
-    plt.bar(recipient_totals.index, recipient_totals.values, color="red")
-    plt.xticks(rotation=45)
-    plt.title("Top 20 Receptores de armas")
+    
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
+    ax.bar(recipient_totals.index, recipient_totals.values, color="red")
+    ax.set_xticklabels(recipient_totals.index, rotation=45)
+    ax.set_title("Top 20 Receptores de armas")
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
@@ -127,11 +136,16 @@ def graf_mayor_supplier(armas,frame_grafico):
     labels = [top_supplier] + list(recipient_totals.index)
     values = [top_value] + list(recipient_totals.values)
 
-    fig = plt.figure(figsize=(10,5))
-    plt.bar(labels, values, color=['blue', 'red', 'green', 'orange', 'purple'])
-    plt.xticks(rotation=45)
-    plt.title(f"Mayor Suministrador: {top_supplier} y sus Top 5 Receptores")
-    plt.ylabel("Número de Armas Entregadas")
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
+    ax.bar(labels, values, color=['blue', 'red', 'green', 'orange', 'purple'])
+    ax.set_xticklabels(labels, rotation=45)
+    ax.set_title(f"Mayor Suministrador: {top_supplier} y sus Top 5 Receptores")
+    ax.set_ylabel("Número de Armas Entregadas")
+
     # plt.show()
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
@@ -160,12 +174,16 @@ def graf_mayor_recipient(armas,frame_grafico):
     labels = [top_recipient] + list(supplier_totals.index)
     values = [top_value] + list(supplier_totals.values)
 
-    fig = plt.figure(figsize=(10,5))
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
     colors = ['blue', 'red', 'green', 'orange', 'purple']
-    plt.bar(labels, values, color=colors[:len(labels)])
-    plt.xticks(rotation=45)
-    plt.title(f"Mayor Receptor: {top_recipient} y sus Top 5 Suministradores")
-    plt.ylabel("Número de Armas Entregadas")
+    ax.bar(labels, values, color=colors[:len(labels)])
+    ax.set_xticklabels(labels, rotation=45)
+    ax.set_title(f"Mayor Receptor: {top_recipient} y sus Top 5 Suministradores")
+    ax.set_ylabel("Número de Armas Entregadas")
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
@@ -183,10 +201,15 @@ def graf_arma(armas, frame_grafico):
     # frame2 = armas.dropna(subset=['Number delivered'])
 
     weapons_totals = armas.groupby('Weapon designation')['Number delivered'].sum().sort_values(ascending=False).head(20)
-    fig = plt.figure(figsize=(10,5))
-    plt.bar(weapons_totals.index, weapons_totals.values, color="green")
-    plt.xticks(rotation=60)
-    plt.title("Top 20 Tipos de Armas Entregadas")
+
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
+    ax.bar(weapons_totals.index, weapons_totals.values, color="green")
+    ax.set_xticklabels(weapons_totals.index, rotation=60)
+    ax.set_title("Top 20 Tipos de Armas Entregadas")
     
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
@@ -209,11 +232,16 @@ def graf_pib(armas, pib, country, frame_grafico):
     years = [int(col) for col in year_cols]
     values = row[year_cols].values.flatten()
     values = pd.to_numeric(values, errors='coerce')
-    fig = plt.figure(figsize=(10,5))
-    plt.plot(years, values)
-    plt.title(f"PIB de {country}")
-    plt.xlabel("Año")
-    plt.ylabel("PIB (US$)")
+
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
+    ax.plot(years, values)
+    ax.set_title(f"PIB de {country}")
+    ax.set_xlabel("Año")
+    ax.set_ylabel("PIB (US$)")
 
     canvas = FigureCanvasTkAgg(fig, master=frame_grafico)
     canvas.draw()
@@ -254,7 +282,10 @@ def graf_arms_gdp(arms_df, pib_df, country, frame_grafico):
     gdp_values = pib_row[year_cols].values.flatten()
     gdp_values = pd.to_numeric(gdp_values, errors='coerce')
 
-    fig, ax1 = plt.subplots(figsize=(12,6))
+    fig, ax1 = plt.subplots(figsize=(12,6), facecolor='none')
+    ax1.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax1.patch.set_alpha(0.0)
 
     ax1.plot(years, gdp_values, 'b-', label='PIB')
     ax1.set_xlabel('Año')
@@ -309,7 +340,10 @@ def graf_rece_gdp(armas, pib, country, frame_grafico):
     gdp_values = pib_row[year_cols].values.flatten()
     gdp_values = pd.to_numeric(gdp_values, errors='coerce')
 
-    fig, ax1 = plt.subplots(figsize=(12,6))
+    fig, ax1 = plt.subplots(figsize=(12,6), facecolor='none')
+    ax1.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax1.patch.set_alpha(0.0)
 
     ax1.plot(years, gdp_values, 'b-', label='PIB')
     ax1.set_xlabel('Año')
