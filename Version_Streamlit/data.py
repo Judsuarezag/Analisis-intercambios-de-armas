@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import glob
 import os
 from pathlib import Path
-
+import darkdetect
 
 def datos_armas(path):
 
@@ -52,7 +52,20 @@ def datos_pib(path2):
 # print(all_files[2])
 # print(all_files[3])
 
+
+def tema():
+
+    tema_actual = darkdetect.theme()
+
+    if tema_actual == "Dark":
+        plt.style.use("dark_background")
+    else:
+        plt.style.use("default")
+
+
 def graf_suppliers(armas):
+    
+    tema()
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
