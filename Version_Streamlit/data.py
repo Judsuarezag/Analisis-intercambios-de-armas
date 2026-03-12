@@ -64,7 +64,7 @@ def tema():
 
 def graf_suppliers(armas):
     
-    # tema()
+    tema()
 
     frame2 = armas.dropna(subset=['Number delivered'])
 
