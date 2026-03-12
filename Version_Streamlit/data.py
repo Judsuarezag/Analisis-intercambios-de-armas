@@ -279,8 +279,8 @@ def graf_rece_gdp(armas, pib, country):
 
     ax1.plot(years, gdp_values, 'b-', label='PIB')
     ax1.set_xlabel('Año')
-    ax1.set_ylabel('PIB (US$ a precios actuales)', color='b')
-    ax1.tick_params(axis='y', labelcolor='b')
+    ax1.set_ylabel('PIB (US$ a precios actuales)', color='g')
+    ax1.tick_params(axis='y', labelcolor='g')
     
     ax2 = ax1.twinx()
     ax2.plot(arms_by_year.index, arms_by_year.values, 'r-', label='Armas ordenadas')
