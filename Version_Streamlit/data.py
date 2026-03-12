@@ -60,7 +60,7 @@ def tema():
         plt.style.use("dark_background")
     else:
         plt.style.use("default")
-        
+
 
 def graf_suppliers(armas):
     tema()
@@ -74,7 +74,7 @@ def graf_suppliers(armas):
 
     ax.bar(supplier_totals.index, supplier_totals.values, color="blue")
     ax.set_xticklabels(supplier_totals.index, rotation=35)
-    ax.set_title("Top 20 Suministradores de armas")
+    ax.set_title("Top 20 Suministradores")
 
 
 def graf_recipients(armas):
