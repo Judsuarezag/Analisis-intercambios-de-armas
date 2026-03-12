@@ -5,7 +5,6 @@ import glob
 import os
 from pathlib import Path
 import darkdetect
-import st_theme
 
 def datos_armas(path):
 
@@ -55,11 +54,14 @@ def datos_pib(path2):
 
 
 def tema():
-    theme = st_theme.get_theme()  # debería regresar "light" o "dark"
-    if str(theme).lower() == "dark":
+
+    tema_actual = darkdetect.theme()
+
+    if tema_actual == "Dark":
         plt.style.use("dark_background")
     else:
         plt.style.use("default")
+
 
 def graf_suppliers(armas):
     
