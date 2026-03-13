@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import glob
 import os
 from pathlib import Path
-import darkdetect
+import streamlit as st
+
 
 def datos_armas(path):
 
@@ -55,45 +56,45 @@ def datos_pib(path2):
 
 def tema():
 
-    tema_actual = darkdetect.theme()
-
-    if tema_actual == "Dark":
+    if st.context.theme.type == "dark":
         plt.style.use("dark_background")
     else:
         plt.style.use("default")
 
 
 def graf_suppliers(armas):
-    
     tema()
-
     frame2 = armas.dropna(subset=['Number delivered'])
-
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False).head(20)
-    
-    plt.figure(figsize=(10,5))
-    plt.bar(supplier_totals.index, supplier_totals.values, color="blue")
-    plt.xticks(rotation=90)
-    plt.title("Top 20 Suministradores de armas")
+
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
+    ax.bar(supplier_totals.index, supplier_totals.values, color="blue")
+    ax.set_xticklabels(supplier_totals.index, rotation=45)
+    ax.set_title("Top 20 Suministradores de armas")
 
 
 def graf_recipients(armas):
-
     tema()
-
     frame2 = armas.dropna(subset=['Number delivered'])
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False).head(20)
-    plt.figure(figsize=(10,5))
-    plt.bar(recipient_totals.index, recipient_totals.values, color="red")
-    plt.xticks(rotation=90)
-    plt.title("Top 20 Receptores de armas")
+
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
+    ax.bar(recipient_totals.index, recipient_totals.values, color="red")
+    ax.set_xticklabels(recipient_totals.index, rotation=45)
+    ax.set_title("Top 20 Receptores de armas")
 
 
 def graf_mayor_supplier(armas):
-
     tema()
-
     frame2 = armas.dropna(subset=['Number delivered'])
 
     supplier_totals = frame2.groupby('Supplier')['Number delivered'].sum().sort_values(ascending=False)
@@ -107,17 +108,19 @@ def graf_mayor_supplier(armas):
     labels = [top_supplier] + list(recipient_totals.index)
     values = [top_value] + list(recipient_totals.values)
 
-    plt.figure(figsize=(10,5))
-    plt.bar(labels, values, color=['blue', 'red', 'green', 'orange', 'purple'])
-    plt.xticks(rotation=45)
-    plt.title(f"Mayor Suministrador: {top_supplier} y sus Top 5 Receptores")
-    plt.ylabel("Número de Armas Entregadas")
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
+    ax.bar(labels, values, color=['blue', 'red', 'green', 'orange', 'purple'])
+    ax.set_xticklabels(labels, rotation=45)
+    ax.set_title(f"Mayor Suministrador: {top_supplier} y sus Top 5 Receptores")
+    ax.set_ylabel("Número de Armas Entregadas")
 
 
 def graf_mayor_recipient(armas):
-
     tema()
-
     frame2 = armas.dropna(subset=['Number delivered'])
 
     recipient_totals = frame2.groupby('Recipient')['Number delivered'].sum().sort_values(ascending=False)
@@ -131,31 +134,31 @@ def graf_mayor_recipient(armas):
     labels = [top_recipient] + list(supplier_totals.index)
     values = [top_value] + list(supplier_totals.values)
 
-    plt.figure(figsize=(10,5))
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
     colors = ['blue', 'red', 'green', 'orange', 'purple']
-    plt.bar(labels, values, color=colors[:len(labels)])
-    plt.xticks(rotation=45)
-    plt.title(f"Mayor Receptor: {top_recipient} y sus Top 5 Suministradores")
-    plt.ylabel("Número de Armas Entregadas")
+    ax.bar(labels, values, color=colors[:len(labels)])
+    ax.set_xticklabels(labels, rotation=45)
+    ax.set_title(f"Mayor Receptor: {top_recipient} y sus Top 5 Suministradores")
+    ax.set_ylabel("Número de Armas Entregadas")
 
 
 def graf_arma(armas):
-
     tema()
-
-    # frame2 = armas.dropna(subset=['Number ordered'])
-
     weapons_totals = armas.groupby('Weapon designation')['Number ordered'].sum().sort_values(ascending=False).head(20)
-    plt.figure(figsize=(10,5))
-    plt.bar(weapons_totals.index, weapons_totals.values, color="green")
-    plt.xticks(rotation=60)
-    plt.title("Top 20 Tipos de Armas Entregadas")
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+    ax.bar(weapons_totals.index, weapons_totals.values, color="green")
+    ax.set_xticklabels(weapons_totals.index, rotation=45)
+    ax.set_title("Top 20 Tipos de Armas Entregadas")
 
 
 def graf_pib(armas, pib, country):
-
     tema()
-
     row = pib[pib['Country Name'] == country]
     if row.empty:
         print(f"No data for {country}")
@@ -164,17 +167,20 @@ def graf_pib(armas, pib, country):
     years = [int(col) for col in year_cols]
     values = row[year_cols].values.flatten()
     values = pd.to_numeric(values, errors='coerce')
-    plt.figure(figsize=(10,5))
-    plt.plot(years, values)
-    plt.title(f"PIB de {country}")
-    plt.xlabel("Año")
-    plt.ylabel("PIB (US$)")
+    
+    fig, ax = plt.subplots(figsize=(10,5), facecolor='none')
+    ax.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+
+    ax.plot(years, values)
+    ax.set_title(f"PIB de {country}")
+    ax.set_xlabel("Año")
+    ax.set_ylabel("PIB (US$)")
 
 
 def graf_arms_gdp(armas, pib, country):
-
     tema()
-
     country_arms = {
         "Estados Unidos": "United States",
         "Reino Unido": "United Kingdom",
@@ -202,12 +208,16 @@ def graf_arms_gdp(armas, pib, country):
     gdp_values = pib_row[year_cols].values.flatten()
     gdp_values = pd.to_numeric(gdp_values, errors='coerce')
 
-    fig, ax1 = plt.subplots(figsize=(12,6))
+    fig, ax1 = plt.subplots(figsize=(12,6), facecolor='none')
 
-    ax1.plot(years, gdp_values, 'b-', label='PIB')
+    ax1.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax1.patch.set_alpha(0.0)
+
+    ax1.plot(years, gdp_values, 'g-', label='PIB')
     ax1.set_xlabel('Año')
-    ax1.set_ylabel('PIB (US$ a precios actuales)', color='b')
-    ax1.tick_params(axis='y', labelcolor='b')
+    ax1.set_ylabel('PIB (US$ a precios actuales)', color='g')
+    ax1.tick_params(axis='y', labelcolor='g')
     
     ax2 = ax1.twinx()
     ax2.plot(arms_by_year.index, arms_by_year.values, 'r-', label='Armas entregadas')
@@ -219,9 +229,7 @@ def graf_arms_gdp(armas, pib, country):
 
 
 def graf_rece_gdp(armas, pib, country):
-
     tema()
-
     country_arms = {
         "Estados Unidos": "United States",
         "Reino Unido": "United Kingdom",
@@ -249,12 +257,16 @@ def graf_rece_gdp(armas, pib, country):
     gdp_values = pib_row[year_cols].values.flatten()
     gdp_values = pd.to_numeric(gdp_values, errors='coerce')
 
-    fig, ax1 = plt.subplots(figsize=(12,6))
+    fig, ax1 = plt.subplots(figsize=(12,6), facecolor='none')
 
-    ax1.plot(years, gdp_values, 'b-', label='PIB')
+    ax1.set_facecolor('none')
+    fig.patch.set_alpha(0.0)
+    ax1.patch.set_alpha(0.0)
+
+    ax1.plot(years, gdp_values, 'g-', label='PIB')
     ax1.set_xlabel('Año')
-    ax1.set_ylabel('PIB (US$ a precios actuales)', color='b')
-    ax1.tick_params(axis='y', labelcolor='b')
+    ax1.set_ylabel('PIB (US$ a precios actuales)', color='g')
+    ax1.tick_params(axis='y', labelcolor='g')
     
     ax2 = ax1.twinx()
     ax2.plot(arms_by_year.index, arms_by_year.values, 'r-', label='Armas ordenadas')
