@@ -14,43 +14,32 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 
 
-
 def datos_armas(path):
 
-    all_files = glob.glob(os.path.join(path + "/*.csv"))
-
-    data = []
-
-    for filename in all_files:
-        df = pd.read_csv(filename, index_col=None, header=0)
-        data.append(df)
-
-    frame = pd.concat(data, axis=0, ignore_index=True)
-
-    frame2=frame.drop(['a', 'b', 'c'], axis=1)
-
+    if os.path.isdir(path):
+        all_files = glob.glob(os.path.join(path, "*.csv"))
+        if not all_files:
+            raise FileNotFoundError(f"No CSV files found in directory: {path}")
+        path = all_files[0]
+    
+    frame = pd.read_csv(path, index_col=None, header=0)
+    frame2 = frame.drop(['a', 'b', 'c'], axis=1, errors='ignore')
+    
     return(frame2)
-
 
 
 def datos_pib(path2):
 
-    all_files = glob.glob(os.path.join(path2 + "/*.csv"))
-
-    data = []
-
-    for filename in all_files:
-        df = pd.read_csv(filename, index_col=None, header=0)
-        data.append(df)
-
-    pib = pd.concat(data, axis=0, ignore_index=True)
-
-    frame2=pib.drop(['a'], axis=1)
-
-    pib = frame2.dropna(subset=['Country Name'])
-
-    return(pib)
-
+    if os.path.isdir(path2):
+        all_files = glob.glob(os.path.join(path2, "*.csv"))
+        if not all_files:
+            raise FileNotFoundError(f"No CSV files found in directory: {path2}")
+        path2 = all_files[0]
+    
+    pib = pd.read_csv(path2, index_col=None, header=0)
+    frame2 = pib.drop(['a'], axis=1, errors='ignore')
+    
+    return(frame2)
 
 
 def tema():
